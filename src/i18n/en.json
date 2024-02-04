@@ -1,0 +1,21 @@
+{
+	"invalidToken": "Authorization token is invalid.",
+	"authorizationError": "Unauthorized access.",
+	"internalError": "Internal Server Error.",
+	"userRegisterValidationPasswordPattern": "userRegisterValidationPasswordPattern",
+	"userAlreadyExist": "User already exist.",
+	"otpSent": "Verify your email address. An OTP has been sent to your email ID.",
+	"userRegisterValidationMobilePattern": "userRegisterValidationMobilePattern",
+	"invalidOtp": "invalidOtp",
+	"emailVerified": "Email has been verified. Please log in.",
+	"loginValidationUsernameRequired": "Please enter the username.",
+	"loginValidationEmailRequired": "Please enter rne ",
+	"loginSuccess": "loginSuccess",
+	"logout": "logout",
+	"userNameNotExist": "User does not exist.",
+	"resendOtpEmail": "resendOtpEmail",
+	"forgotPasswordValidationEmailRequired": "forgotPasswordValidationEmailRequired",
+	"forgotPasswordEmailSendSuccess": "forgotPasswordEmailSendSuccess",
+	"userOtpValidationEmailRequired": "userOtpValidationEmailRequired",
+	"PasswordResetSuccessfully": "PasswordResetSuccessfully"
+}

@@ -49,10 +49,11 @@ module.exports = {
 
                 const payload = {
                   id: user._id,
-                  role: user.role,
                   exp: userExpTime,
                 };
+                console.log("payload",payload);
                 const token = issueUser(payload);
+                console.log("token",token);
                 const meta = { token };
                 let tokenUpdate = {};
 
@@ -381,6 +382,7 @@ module.exports = {
    */
   getUserDetail: async (req, res) => {
     try {
+      console.log("getUserDetail");
       const { authUserId } = req;
 
       const user = await User.findOne({
@@ -389,7 +391,7 @@ module.exports = {
           { _id: { $eq: authUserId } },
         ],
       });
-
+console.log("user",user);
       Response.successResponseData(
         res,
         user,

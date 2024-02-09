@@ -4,9 +4,9 @@ const jwt = require("jsonwebtoken");
 module.exports.issueUser = function (payload) {
   return jwt.sign(
     {
-      role: payload.role,
       exp: payload.exp,
       id: payload.id,
+      user_type: payload.user_type,
     },
     process.env.JWT_USER_SECRETKEY,
     { algorithm: "HS512" }

@@ -146,7 +146,7 @@ module.exports = {
               otp: OTP,
             };
 
-            await Mailer.sendMail(
+             Mailer.sendMail(
               requestParams.email,
               MAIL_SUBJECT_MESSAGE_REGISTRATION,
               newRegistration,
@@ -280,99 +280,6 @@ module.exports = {
             );
           } else {
             Response.errorResponseWithoutData(
-              res,
-              res.locals.__("userNotExist"),
-              FAIL
-            );
-          }
-        }
-      });
-    } catch (error) {
-      return Response.errorResponseData(res, res.__("internalError"), error);
-    }
-  },
-
-  /**
-   * @description This function is get user profile detail.
-   * @param req
-   * @param res
-   */
-  userProfileDetails: async (req, res) => {
-    try {
-      const requestParams = req.query;
-      userProfileDetailsValidations(requestParams, res, async (validate) => {
-        if (validate) {
-          let profile = await Profile.findOne({
-            _id: new mongoose.Types.ObjectId(requestParams.target_profile_id),
-          });
-        }
-
-        return Response.successResponseData(
-          res,
-          profile,
-          SUCCESS,
-          res.locals.__("success")
-        );
-      });
-    } catch (error) {
-      return Response.errorResponseData(
-        res,
-        res.__("internalError"),
-        INTERNAL_SERVER
-      );
-    }
-  },
-
-  /**
-   * @description "This function is to update email."
-   * @param req
-   * @param res
-   */
-  updateEmail: async (req, res) => {
-    try {
-      const requestParams = req.body;
-      const { authUserId } = req;
-      updateEmailValidation(requestParams, res, async (validate) => {
-        if (validate) {
-          let user = await User.findOne({ _id: authUserId }, { username: 1 });
-
-          if (user) {
-            var CURRENT_DATE = new Date();
-            const OTP_TOKEN_EXPIRE = new Date(
-              CURRENT_DATE.getTime() + process.env.OTP_EXPIRY_MINUTE * 60000
-            );
-            const OTP = await generateRandomNumber(6);
-
-            await User.updateOne(
-              { _id: authUserId },
-              {
-                $set: {
-                  otp: OTP,
-                  otp_expiry: OTP_TOKEN_EXPIRE,
-                },
-              }
-            );
-
-            const LOCALS = {
-              username: user.username,
-              appName: AppName,
-              otp: OTP,
-            };
-
-            await Mailer.sendMail(
-              requestParams.email,
-              VERIFY_EMAIL,
-              verifyEmail,
-              LOCALS
-            );
-
-            return Response.successResponseWithoutData(
-              res,
-              res.locals.__("emailVerifyMailSent"),
-              SUCCESS
-            );
-          } else {
-            return Response.errorResponseWithoutData(
               res,
               res.locals.__("userNotExist"),
               FAIL

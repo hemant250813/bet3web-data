@@ -5,6 +5,7 @@ const {
   ResultTransaction,
 } = require("./user");
 const Otp = require("./otp");
+const Transaction = require("./transaction");
 
 module.exports = {
   User,
@@ -12,4 +13,5 @@ module.exports = {
   BankAccount,
   ResultTransaction,
   Otp,
+  Transaction
 };

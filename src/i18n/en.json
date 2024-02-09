@@ -17,5 +17,6 @@
 	"forgotPasswordValidationEmailRequired": "forgotPasswordValidationEmailRequired",
 	"forgotPasswordEmailSendSuccess": "forgotPasswordEmailSendSuccess",
 	"userOtpValidationEmailRequired": "userOtpValidationEmailRequired",
-	"PasswordResetSuccessfully": "PasswordResetSuccessfully"
+	"PasswordResetSuccessfully": "PasswordResetSuccessfully",
+	"emailPasswordNotMatch": "emailPasswordNotMatch"
 }

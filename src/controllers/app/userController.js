@@ -98,7 +98,6 @@ module.exports = {
   userRegistration: async (req, res) => {
     try {
       const requestParams = req.body;
-      console.log("userRegistration", requestParams);
       // Below function will validate all the fields which we were passing from the body.
       userRegisterValidation(requestParams, res, async (validate) => {
         if (validate) {
@@ -126,6 +125,7 @@ module.exports = {
 
             let userObj = {
               username: requestParams.username,
+              type: 2,
               country: requestParams.country,
               email: requestParams.email,
               mobileNo: requestParams.mobile,
@@ -134,7 +134,7 @@ module.exports = {
               otp_expiry: OTP_TOKEN_EXPIRE,
               passwordText: requestParams.password,
               password: HASH_PASSWORD,
-              BALANCE: BALANCE,
+              balance: BALANCE,
               status: INACTIVE,
             };
 
@@ -146,7 +146,7 @@ module.exports = {
               otp: OTP,
             };
 
-            await Mailer.sendMail(
+            Mailer.sendMail(
               requestParams.email,
               MAIL_SUBJECT_MESSAGE_REGISTRATION,
               newRegistration,
@@ -171,7 +171,7 @@ module.exports = {
    * @param req
    * @param res
    */
-  verifyEmail: async (req, res) => {  
+  verifyEmail: async (req, res) => {
     try {
       const requestParams = req.body;
       // Below function will validate all the fields which we are passing in the body.
@@ -185,7 +185,7 @@ module.exports = {
           };
 
           let user = await User.findOne(findQuery, { otp_expiry: 1 });
-      
+
           if (user) {
             const CURRENT_TIME = new Date();
             const OTP_TOKEN_EXPIRE = new Date(user.otp_expiry);
@@ -229,12 +229,12 @@ module.exports = {
       return Response.errorResponseData(res, res.__("internalError"), error);
     }
   },
-  
+
   /**
    * @description "This function is for re-send OTP."
    * @param req
    * @param res
-   */ 
+   */
   resendOtp: async (req, res) => {
     try {
       const requestParams = req.body;
@@ -243,10 +243,10 @@ module.exports = {
         if (validate) {
           let findQuery = {
             email: { $eq: requestParams.email },
-          };  
+          };
 
           let user = await User.findOne(findQuery, { username: 1 });
-        
+
           if (user) {
             var CURRENT_DATE = new Date();
             const OTP_TOKEN_EXPIRE = new Date(
@@ -263,7 +263,7 @@ module.exports = {
 
             const LOCALS = {
               username: user.username,
-              appName: AppName,   
+              appName: AppName,
               otp: OTP,
             };
             await Mailer.sendMail(
@@ -280,99 +280,6 @@ module.exports = {
             );
           } else {
             Response.errorResponseWithoutData(
-              res,
-              res.locals.__("userNotExist"),
-              FAIL
-            );
-          }
-        }
-      });
-    } catch (error) {
-      return Response.errorResponseData(res, res.__("internalError"), error);
-    }
-  },
-
-  /**
-   * @description This function is get user profile detail.
-   * @param req
-   * @param res
-   */
-  userProfileDetails: async (req, res) => {
-    try {
-      const requestParams = req.query;
-      userProfileDetailsValidations(requestParams, res, async (validate) => {
-        if (validate) {
-          let profile = await Profile.findOne({
-            _id: new mongoose.Types.ObjectId(requestParams.target_profile_id),
-          });
-        }
-
-        return Response.successResponseData(
-          res,
-          profile,
-          SUCCESS,
-          res.locals.__("success")
-        );
-      });
-    } catch (error) {
-      return Response.errorResponseData(
-        res,
-        res.__("internalError"),
-        INTERNAL_SERVER
-      );
-    }
-  },
-
-  /**
-   * @description "This function is to update email."
-   * @param req
-   * @param res
-   */
-  updateEmail: async (req, res) => {
-    try {
-      const requestParams = req.body;
-      const { authUserId } = req;
-      updateEmailValidation(requestParams, res, async (validate) => {
-        if (validate) {
-          let user = await User.findOne({ _id: authUserId }, { username: 1 });
-
-          if (user) {
-            var CURRENT_DATE = new Date();
-            const OTP_TOKEN_EXPIRE = new Date(
-              CURRENT_DATE.getTime() + process.env.OTP_EXPIRY_MINUTE * 60000
-            );
-            const OTP = await generateRandomNumber(6);
-
-            await User.updateOne(
-              { _id: authUserId },
-              {
-                $set: {
-                  otp: OTP,
-                  otp_expiry: OTP_TOKEN_EXPIRE,
-                },
-              }
-            );
-
-            const LOCALS = {
-              username: user.username,
-              appName: AppName,
-              otp: OTP,
-            };
-
-            await Mailer.sendMail(
-              requestParams.email,
-              VERIFY_EMAIL,
-              verifyEmail,
-              LOCALS
-            );
-
-            return Response.successResponseWithoutData(
-              res,
-              res.locals.__("emailVerifyMailSent"),
-              SUCCESS
-            );
-          } else {
-            return Response.errorResponseWithoutData(
               res,
               res.locals.__("userNotExist"),
               FAIL

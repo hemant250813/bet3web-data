@@ -17,7 +17,7 @@ module.exports = {
                     ciphers:'SSLv3'
                 }
             };
-            console.log("configOption",configOption);
+
             const viewPath = 'src/views/emails';
             const transporter = nodemailer.createTransport(configOption);
             const email = new Email({

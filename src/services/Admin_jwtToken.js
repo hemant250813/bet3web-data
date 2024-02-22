@@ -5,9 +5,8 @@ module.exports.issueAdmin = function (payload) {
   return jwt.sign(
     {
       id: payload.id,
-      role: payload.role,
+      type: payload.type,
       exp: payload.exp,
-      sportShares: payload.sportShares
     },
     process.env.JWT_SECRETKEY,
     { algorithm: "HS512" }

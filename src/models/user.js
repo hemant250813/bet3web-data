@@ -14,14 +14,28 @@ const resultTransactionSchema = new mongoose.Schema(
     pl: {
       type: Number,
     },
-    marketId: {
-      type: mongoose.Types.ObjectId,
-      ref: "Market",
+    game: {
+      type: String,
+      enum: [
+        "head_tail",
+        "rock_paper_scissors",
+        "spin_wheel",
+        "number_guess",
+        "dice_rolling",
+        "card_finding",
+        "number_slot",
+        "number_pool",
+      ],
       maxLength: 100,
     },
     roundId: {
       type: String,
       maxLength: 100,
+    },
+    result: {
+      type: String,
+      enum: ["win", "loss"],
+      maxLength: 30,
     },
     createDate: "date",
     updatedDate: "date",
@@ -105,6 +119,12 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
       maxLength: 100,
+    },
+    type: {
+      type: Number,
+      enum: [1, 2],
+      required: true,
+      Comment: { admin: 1, user: 2 },
     },
     email: {
       type: String,

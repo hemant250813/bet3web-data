@@ -2,7 +2,6 @@ const router = require("express").Router();
 const connect = require("connect");
 const { userTokenAuth } = require("../../middlewares/user");
 const {
-  login,
   forgotPassword,
   resetPassword,
   changePassword,
@@ -29,7 +28,6 @@ const authMiddleware = (() => {
 })();
 
 //lrf
-router.post("/login", login);
 router.post("/forgot_password", forgotPassword);
 router.post("/reset_password", resetPassword);
 router.post("/change_password", userTokenAuth, changePassword);

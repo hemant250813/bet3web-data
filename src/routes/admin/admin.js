@@ -3,7 +3,7 @@ const connect = require("connect");
 const { adminTokenAuth } = require("../../middlewares/admin");
 
 const {
-  login,
+  loginSwitch,
   resetPassword,
   changePassword,
   authDetail,
@@ -28,7 +28,7 @@ const authMiddleware = (() => {
 })();
 
 // lrf
-router.post("/login", login);
+router.post("/login", loginSwitch);
 router.get("/auth-detail", adminTokenAuth, authDetail);
 router.post("/reset-password", adminTokenAuth, resetPassword);
 router.post("/change-password", adminTokenAuth, changePassword);

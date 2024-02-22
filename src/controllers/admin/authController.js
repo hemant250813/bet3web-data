@@ -4,7 +4,7 @@ const ip = require("ip");
 const axios = require("axios");
 const Response = require("../../services/Response");
 const Constants = require("../../services/Constants");
-const { ROLES, ACTIVE } = require("../../services/Constants");
+const { ROLES, ACTIVE, SUCCESS, INTERNAL_SERVER } = require("../../services/Constants");
 const {
   loginValidation,
   logoutAndBlockValidation,
@@ -12,6 +12,7 @@ const {
   changePasswordValidation,
 } = require("../../services/AdminValidation");
 const { Login } = require("../../transformers/admin/adminAuthTransformer");
+const { LoginUser } = require("../../transformers/user/userAuthTransformer");
 const {
   User,
   UserLoginHistory,
@@ -19,6 +20,7 @@ const {
   ResultTransaction,
 } = require("../../models");
 const { issueAdmin } = require("../../services/Admin_jwtToken");
+const { authLogin, userLogin } = require("../auth");
 
 module.exports = {
   /**
@@ -26,132 +28,35 @@ module.exports = {
    * @param req
    * @param res
    */
-  login: async (req, res) => {
+  loginSwitch: async (req, res) => {
     try {
       const reqParam = req.body;
       loginValidation(reqParam, res, async (validate) => {
         if (validate) {
-          let admin = await User.findOne({
-            username: reqParam.username.toLowerCase(),
-            type: { $eq: 1 },
-          });
+          let user = await User.findOne(
+            {
+              username: reqParam.user.toLowerCase(),
+            },
+            { type: 1 }
+          );
 
-          if (admin) {
-            if (admin?.status === ACTIVE) {
-              const comparePassword = await bcrypt.compare(
-                reqParam.password,
-                admin.password
-              );
-
-              if (comparePassword) {
-                const alreadyExitList = await User.find(
-                  {},
-                  { username: 1, email: 1, mobileNo: 1 }
-                );
-
-                let system_ip = ip.address(); //system ip address
-
-                let browser_ip = await axios.get(
-                  "https://api.ipify.org/?format=json" //get browser ip address
-                );
-
-                const superAdminExpTime =
-                  Math.floor(Date.now() / 1000) +
-                  60 * 60 * 24 * process.env.SUPER_ADMIN_TOKEN_EXP;
-
-                const payload = {
-                  id: admin._id,
-                  type: admin.type,
-                  exp: superAdminExpTime,
-                };
-                const token = issueAdmin(payload);
-                const meta = { token };
-
-                let loginHistory = await UserLoginHistory.findOne({
-                  userId: admin._id,
-                });
-                let loginHistoryObject = {};
-                if (loginHistory) {
-                  loginHistoryObject = {
-                    loginDetails: {
-                      ip_address: {
-                        system_ip: system_ip,
-                        browser_ip: browser_ip?.data?.ip,
-                      },
-                      last_login: new Date(),
-                    },
-                  };
-
-                  let update = {};
-                  if (loginHistory?.loginDetails?.length !== 10) {
-                    tenRecords = loginHistoryObject;
-                    update = {
-                      $push: {
-                        loginDetails: loginHistoryObject?.loginDetails,
-                      },
-                    };
-                  } else {
-                    update = {
-                      $set: {
-                        loginDetails: [],
-                      },
-                    };
-                  }
-
-                  await UserLoginHistory.updateOne(
-                    { userId: admin._id },
-                    update
-                  );
-                } else {
-                  loginHistoryObject = {
-                    userId: admin._id,
-                    loginDetails: {
-                      ip_address: {
-                        system_ip: system_ip,
-                        browser_ip: browser_ip?.data?.ip,
-                      },
-                      last_login: new Date(),
-                    },
-                  };
-
-                  await UserLoginHistory.create(loginHistoryObject);
-                }
-
-                const adminObj = {
-                  name: admin.name,
-                  username: admin.username,
-                  type: admin.type,
-                  email: admin.email,
-                  mobileNo: admin.mobileNo,
-                  balance: admin.balance,
-                  alreadyExitList: alreadyExitList,
-                };
-                return Response.successResponseData(
-                  res,
-                  new Transformer.Single(adminObj, Login).parse(),
-                  Constants.SUCCESS,
-                  res.locals.__("loginSuccess"),
-                  meta
-                );
-              } else {
-                return Response.errorResponseWithoutData(
-                  res,
-                  res.locals.__("userNamePasswordNotMatch"),
-                  Constants.BAD_REQUEST
-                );
-              }
-            } else {
-              Response.errorResponseWithoutData(
-                res,
-                res.locals.__("accountIsInactive"),
-                Constants.FAIL
-              );
-            }
-          } else {
-            Response.errorResponseWithoutData(
+          if (user?.type === 1) {
+            let authData = await authLogin(req,reqParam);
+            return Response.successResponseData(
               res,
-              res.locals.__("userNameNotExist"),
-              Constants.FAIL
+              new Transformer.Single(authData?.adminObj, Login).parse(),
+              SUCCESS,
+              res.locals.__("loginSuccess"),
+              authData?.meta
+            );
+          } else {
+            let userData = await userLogin(req,reqParam);
+            return Response.successResponseData(
+              res,
+              new Transformer.Single(userData?.user, LoginUser).parse(),
+              SUCCESS,
+              res.locals.__("loginSuccess"),
+              userData?.meta
             );
           }
         }
@@ -160,7 +65,7 @@ module.exports = {
       return Response.errorResponseData(
         res,
         res.__("internalError"),
-        Constants.INTERNAL_SERVER
+        INTERNAL_SERVER
       );
     }
   },
@@ -368,17 +273,14 @@ module.exports = {
         { transaction_type: 1, amount: 1 }
       );
 
-      const resultTransaction = await ResultTransaction.find(
-        {},
-        { pl: 1 }
-      );
+      const resultTransaction = await ResultTransaction.find({}, { pl: 1 });
 
       const totalDeposit = transaction.reduce((accumulator, currentValue) => {
         if (currentValue?.transaction_type === "deposit") {
           let total = accumulator + currentValue?.amount;
           return total;
         }
-        
+
         // Always return the accumulator if the condition is not met
         return accumulator;
       }, 0);
@@ -391,10 +293,14 @@ module.exports = {
       }, 0);
 
       const total_pl = resultTransaction.reduce((accumulator, currentValue) => {
-          return accumulator + currentValue?.pl;
+        return accumulator + currentValue?.pl;
       }, 0);
 
-      console.log({totalDeposit:totalDeposit,totalWithdrawl:totalWithdrawl,total_pl:total_pl});
+      console.log({
+        totalDeposit: totalDeposit,
+        totalWithdrawl: totalWithdrawl,
+        total_pl: total_pl,
+      });
       const adminObj = {
         name: admin.name,
         username: admin.username,

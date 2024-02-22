@@ -11,7 +11,7 @@ module.exports = {
    */
   loginValidation: (req, res, callback) => {
     const schema = Joi.object({
-      username: Joi.string().trim().required(),
+      user: Joi.string().trim().required(),
       password: Joi.string().trim().required(),
     });
     const { error } = schema.validate(req);

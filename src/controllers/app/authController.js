@@ -26,101 +26,6 @@ const { app } = require("../../../server.js");
 
 module.exports = {
   /**
-   * @description "This function is for User-Login."
-   * @param req
-   * @param res
-   */
-  login: async (req, res) => {
-    try {
-      const reqParam = req.body;
-      loginValidation(reqParam, res, async (validate) => {
-        if (validate) {
-          let findQuery = {};
-
-          findQuery = {
-            $or: [
-              { email: { $eq: reqParam.user } },
-              { username: { $eq: reqParam.user } },
-            ],
-          };
-
-          const user = await User.findOne(findQuery);
-
-          let browser_ip =
-            req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-
-          const system_ip = req.clientIp;
-          if (user) {
-            if (user?.status === ACTIVE) {
-              const comparePassword = await bcrypt.compare(
-                reqParam.password,
-                user.password
-              );
-              if (comparePassword) {
-                const USER_TOKEN_EXPIRY_TIME =
-                  Math.floor(Date.now() / 1000) +
-                  60 * 60 * 24 * process.env.USER_TOKEN_EXP;
-
-                const payload = {
-                  id: user._id,
-                  exp: USER_TOKEN_EXPIRY_TIME,
-                };
-
-                const token = issueUser(payload);
-                const meta = { token };
-                let tokenUpdate = {};
-
-                tokenUpdate = {
-                  $set: {
-                    last_login: new Date(),
-                    token: token,
-                    "ip_address.system_ip": system_ip,
-                    "ip_address.browser_ip": browser_ip,
-                  },
-                };
-
-                await User.updateOne({ _id: user?._id }, tokenUpdate);
-
-                return Response.successResponseData(
-                  res,
-                  new Transformer.Single(user, Login).parse(),
-                  SUCCESS,
-                  res.locals.__("loginSuccess"),
-                  meta
-                );
-              } else {
-                return Response.errorResponseWithoutData(
-                  res,
-                  res.locals.__("emailPasswordNotMatch"),
-                  BAD_REQUEST
-                );
-              }
-            } else {
-              Response.errorResponseWithoutData(
-                res,
-                res.locals.__("accountIsInactive"),
-                FAIL
-              );
-            }
-          } else {
-            Response.errorResponseWithoutData(
-              res,
-              res.locals.__("userNameNotExist"),
-              FAIL
-            );
-          }
-        }
-      });
-    } catch (error) {
-      return Response.errorResponseData(
-        res,
-        res.__("internalError"),
-        INTERNAL_SERVER
-      );
-    }
-  },
-
-  /**
    * @description This function is for Forgot Password of user.
    * @param req
    * @param res
@@ -443,6 +348,7 @@ module.exports = {
         email: user.email,
         mobileNo: user.mobileNo,
         balance: user.balance,
+        type: user.type,
         totalDeposit: totalDeposit,
         totalWithdrawl: totalWithdrawl,
         total_pl: total_pl,

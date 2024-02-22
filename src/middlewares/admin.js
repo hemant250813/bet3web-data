@@ -11,7 +11,7 @@ module.exports = {
    */
   adminTokenAuth: async (req, res, next) => {
     try {
-      const token = req.headers.authorization;
+      const token = req.headers.authorization.replace(/['"]+/g, "");
       if (!token) {
         Response.errorResponseWithoutData(
           res,
@@ -24,10 +24,8 @@ module.exports = {
           const decoded = await jwToken.verify(tokenData);
           if (decoded.id) {
             req.authAdminId = decoded.id;
-            req.role = decoded.role;
-            req.layerID = decoded.id;
-            req.sportShares = decoded.sportShares
-            // eslint-disable-next-line consistent-return 
+            req.type = decoded.type;
+            // eslint-disable-next-line consistent-return
             const admin = await User.findOne(
               { _id: req.authAdminId },
               { _id: 1 }

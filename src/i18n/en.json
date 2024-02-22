@@ -17,5 +17,14 @@
 	"forgotPasswordValidationEmailRequired": "forgotPasswordValidationEmailRequired",
 	"forgotPasswordEmailSendSuccess": "forgotPasswordEmailSendSuccess",
 	"userOtpValidationEmailRequired": "userOtpValidationEmailRequired",
-	"PasswordResetSuccessfully": "PasswordResetSuccessfully"
+	"PasswordResetSuccessfully": "PasswordResetSuccessfully",
+	"emailPasswordNotMatch": "emailPasswordNotMatch",
+	"success": "success",
+	"logoutValidationUserIdRequired": "logoutValidationUserIdRequired",
+	"userNamePasswordNotMatch": "userNamePasswordNotMatch",
+	"deposit": "deposit",
+	"activeDeActivateValidationUseridRequired": "activeDeActivateValidationUseridRequired",
+	"deActivated": "User has been deActivated.",
+	"activated": "User has been activated.",
+	"withdrawn": "withdrawn"
 }

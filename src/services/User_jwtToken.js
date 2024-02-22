@@ -4,7 +4,6 @@ const jwt = require("jsonwebtoken");
 module.exports.issueUser = function (payload) {
   return jwt.sign(
     {
-      role: payload.role,
       exp: payload.exp,
       id: payload.id,
     },

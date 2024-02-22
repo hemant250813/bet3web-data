@@ -1,8 +1,12 @@
 const Response = require("../services/Response");
 const jwToken = require("../services/User_jwtToken.js");
 const { User } = require("../models");
-const { INACTIVE, ACTIVE } = require("../services/Constants");
-const Constants = require("../services/Constants");
+const {
+  INACTIVE,
+  ACTIVE,
+  INTERNAL_SERVER,
+  UNAUTHENTICATED,
+} = require("../services/Constants");
 
 module.exports = {
   /**
@@ -12,41 +16,28 @@ module.exports = {
    */
   userTokenAuth: async (req, res, next) => {
     try {
-      const token = req.headers.authorization;
+      const token = req.headers.authorization.replace(/['"]+/g, '');
+      
       if (!token) {
         Response.errorResponseWithoutData(
           res,
           res.locals.__("authorizationError"),
-          401
+          UNAUTHORIZED
         );
       } else {
         const tokenData = await jwToken.decode(token);
         if (tokenData) {
           const decoded = await jwToken.verify(tokenData);
-
           if (decoded.id) {
             req.authUserId = decoded.id;
-            req.role = decoded.role;
-
             // eslint-disable-next-line consistent-return
-            const user = await User.findOne(
-              { _id: req.authUserId },
-              { status: 1, token: 1 }
-            );
-
-            let user_token = `Bearer ${user.token}`;
-            if (user && user_token === token) {
-              // let user_token = `Bearer ${user.token}`;
-              // const userTokenData = await jwToken.decode(user_token);
-              // if (userTokenData) {
-              // const decodedUserData = await jwToken.verify(userTokenData);
-              // if (decodedUserData.id) {
-              //   if (decodedUserData.id === decoded.id) {
+            const user = await User.findOne({ _id: req.authUserId });
+            if (user) {
               if (user && user.status === INACTIVE) {
                 return Response.errorResponseWithoutData(
                   res,
                   res.locals.__("accountIsInactive"),
-                  401
+                  UNAUTHENTICATED
                 );
               }
               if (user && user.status === ACTIVE) {
@@ -55,57 +46,36 @@ module.exports = {
                 return Response.errorResponseWithoutData(
                   res,
                   res.locals.__("accountBlocked"),
-                  401
+                  UNAUTHENTICATED
                 );
               }
-              // } else {
-              //   return Response.errorResponseWithoutData(
-              //     res,
-              //     res.locals.__("invalidToken"),
-              //     401
-              //   );
-              // }
             } else {
               return Response.errorResponseWithoutData(
                 res,
                 res.locals.__("invalidToken"),
-                401
+                UNAUTHENTICATED
               );
             }
-            // } else {
-            //   return Response.errorResponseWithoutData(
-            //     res,
-            //     res.locals.__("invalidToken"),
-            //     401
-            //   );
-            // }
           } else {
             return Response.errorResponseWithoutData(
               res,
               res.locals.__("invalidToken"),
-              401
+              UNAUTHENTICATED
             );
           }
         } else {
           return Response.errorResponseWithoutData(
             res,
             res.locals.__("invalidToken"),
-            401
+            UNAUTHENTICATED
           );
         }
-        // } else {
-        //   return Response.errorResponseWithoutData(
-        //     res,
-        //     res.locals.__("invalidToken"),
-        //     401
-        //   );
-        // }
       }
     } catch (error) {
       return Response.errorResponseData(
         res,
         res.__("internalError"),
-        Constants.INTERNAL_SERVER
+        INTERNAL_SERVER
       );
     }
   },

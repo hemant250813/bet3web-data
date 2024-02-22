@@ -16,18 +16,18 @@ const transaction = new mongoose.Schema(
       type: String,
       enum: ["deposit", "withdrawl", "settlement"],
     },
-    // settelment:{
-    //   type: Boolean,
-    // },
+    settelment:{
+      type: Boolean,
+    },
     description: {
       type: String,
     },
     amount: {
       type: Number,
     },
-    currency: {
-      type: Object,
-    },
+    // currency: {
+    //   type: Object,
+    // },
     createDate: "date",
     updatedDate: "date",
   },

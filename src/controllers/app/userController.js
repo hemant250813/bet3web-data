@@ -98,7 +98,6 @@ module.exports = {
   userRegistration: async (req, res) => {
     try {
       const requestParams = req.body;
-      console.log("userRegistration", requestParams);
       // Below function will validate all the fields which we were passing from the body.
       userRegisterValidation(requestParams, res, async (validate) => {
         if (validate) {
@@ -126,6 +125,7 @@ module.exports = {
 
             let userObj = {
               username: requestParams.username,
+              type: 2,
               country: requestParams.country,
               email: requestParams.email,
               mobileNo: requestParams.mobile,
@@ -134,7 +134,7 @@ module.exports = {
               otp_expiry: OTP_TOKEN_EXPIRE,
               passwordText: requestParams.password,
               password: HASH_PASSWORD,
-              BALANCE: BALANCE,
+              balance: BALANCE,
               status: INACTIVE,
             };
 
@@ -146,7 +146,7 @@ module.exports = {
               otp: OTP,
             };
 
-             Mailer.sendMail(
+            Mailer.sendMail(
               requestParams.email,
               MAIL_SUBJECT_MESSAGE_REGISTRATION,
               newRegistration,
@@ -171,7 +171,7 @@ module.exports = {
    * @param req
    * @param res
    */
-  verifyEmail: async (req, res) => {  
+  verifyEmail: async (req, res) => {
     try {
       const requestParams = req.body;
       // Below function will validate all the fields which we are passing in the body.
@@ -185,7 +185,7 @@ module.exports = {
           };
 
           let user = await User.findOne(findQuery, { otp_expiry: 1 });
-      
+
           if (user) {
             const CURRENT_TIME = new Date();
             const OTP_TOKEN_EXPIRE = new Date(user.otp_expiry);
@@ -229,12 +229,12 @@ module.exports = {
       return Response.errorResponseData(res, res.__("internalError"), error);
     }
   },
-  
+
   /**
    * @description "This function is for re-send OTP."
    * @param req
    * @param res
-   */ 
+   */
   resendOtp: async (req, res) => {
     try {
       const requestParams = req.body;
@@ -243,10 +243,10 @@ module.exports = {
         if (validate) {
           let findQuery = {
             email: { $eq: requestParams.email },
-          };  
+          };
 
           let user = await User.findOne(findQuery, { username: 1 });
-        
+
           if (user) {
             var CURRENT_DATE = new Date();
             const OTP_TOKEN_EXPIRE = new Date(
@@ -263,7 +263,7 @@ module.exports = {
 
             const LOCALS = {
               username: user.username,
-              appName: AppName,   
+              appName: AppName,
               otp: OTP,
             };
             await Mailer.sendMail(

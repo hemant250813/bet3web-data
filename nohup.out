@@ -1,0 +1,1822 @@
+[33m[nodemon] 3.0.1[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 11:19:51.049 UTC] - info: [191184:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:191184) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 11:27:47.197 UTC] - info: [196442:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:196442) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 11:27:52.903 UTC] - info: [196525:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:196525) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+node:internal/modules/cjs/loader:1056
+  throw err;
+  ^
+
+Error: Cannot find module 'express'
+Require stack:
+- /home/prakash/projects/apna app/bet3web/bet3web-data/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1053:15)
+    at Module._load (node:internal/modules/cjs/loader:898:27)
+    at Module.require (node:internal/modules/cjs/loader:1120:19)
+    at require (node:internal/modules/helpers:112:18)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:1:17)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '/home/prakash/projects/apna app/bet3web/bet3web-data/server.js' ]
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 11:29:01.695 UTC] - info: [197480:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:197480) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 11:30:50.937 UTC] - info: [198749:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:198749) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 11:31:16.649 UTC] - info: [199145:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:199145) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 11:38:42.217 UTC] - info: [204118:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:204118) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 11:40:10.418 UTC] - info: [205288:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:205288) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+(node:191170) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 exit listeners added to [Bus]. Use emitter.setMaxListeners() to increase limit
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2024-02-19 11:40:13.736 UTC] - info: [205383:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:205383) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 11:41:26.241 UTC] - info: [206226:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:206226) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 11:42:03.926 UTC] - info: [206785:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:206785) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 11:46:27.140 UTC] - info: [209923:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:209923) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 11:50:32.452 UTC] - info: [213174:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:213174) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 11:50:54.579 UTC] - info: [213546:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:213546) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 11:54:31.094 UTC] - info: [215979:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:215979) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:00:02.419 UTC] - info: [219559:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:219559) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:00:51.035 UTC] - info: [220293:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:220293) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:02:35.919 UTC] - info: [221517:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:221517) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:03:33.766 UTC] - info: [222261:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:222261) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:03:44.694 UTC] - info: [222430:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:222430) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:05:47.286 UTC] - info: [223778:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:223778) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:10:37.917 UTC] - info: [227022:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:227022) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:14:25.278 UTC] - info: [229460:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:229460) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:14:49.662 UTC] - info: [229799:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:229799) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:15:32.005 UTC] - info: [230381:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:230381) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:15:57.084 UTC] - info: [230724:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:230724) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:17:45.909 UTC] - info: [232214:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:232214) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:18:12.765 UTC] - info: [232651:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:232651) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:19:03.778 UTC] - info: [233219:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:233219) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:19:18.905 UTC] - info: [233471:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:233471) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:19:26.372 UTC] - info: [233610:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:233610) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:20:57.449 UTC] - info: [234651:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:234651) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:36:05.950 UTC] - info: [243758:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:243758) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:37:19.091 UTC] - info: [244592:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:244592) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:41:17.592 UTC] - info: [246959:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:246959) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:41:38.020 UTC] - info: [247235:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:247235) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:42:13.960 UTC] - info: [247684:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:247684) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:42:46.448 UTC] - info: [248060:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:248060) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:42:49.348 UTC] - info: [248155:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:248155) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:43:32.972 UTC] - info: [248612:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:248612) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:44:12.326 UTC] - info: [249116:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:249116) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:44:15.611 UTC] - info: [249188:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:249188) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:44:40.885 UTC] - info: [249485:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:249485) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:45:29.525 UTC] - info: [250307:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:250307) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:45:56.499 UTC] - info: [250637:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:250637) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:56:54.474 UTC] - info: [258758:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:258758) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 12:57:19.920 UTC] - info: [259110:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:259110) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 13:27:40.756 UTC] - info: [282226:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:282226) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 13:28:06.537 UTC] - info: [282533:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:282533) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 13:28:30.809 UTC] - info: [282891:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:282891) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 13:29:01.567 UTC] - info: [283337:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:283337) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 13:30:25.981 UTC] - info: [284290:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:284290) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 13:30:29.466 UTC] - info: [284386:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:284386) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 13:33:45.207 UTC] - info: [286712:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:286712) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 13:33:48.139 UTC] - info: [286805:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:286805) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node server.js`[39m
+[2024-02-19 13:33:50.863 UTC] - info: [286872:src/logger/logger.js] process.env.MONGO_CONNECTION_STRING :::mongodb://0.0.0.0:27017/bet3web   
+(node:286872) Warning: Accessing non-existent property 'app' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EACCES: permission denied 0.0.0.0:80
+    at Server.setupListenHandle [as _listen2] (node:net:1724:21)
+    at listenInCluster (node:net:1789:12)
+    at Server.listen (node:net:1877:7)
+    at Object.<anonymous> (/home/prakash/projects/apna app/bet3web/bet3web-data/server.js:59:8)
+    at Module._compile (node:internal/modules/cjs/loader:1239:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1293:10)
+    at Module.load (node:internal/modules/cjs/loader:1096:32)
+    at Module._load (node:internal/modules/cjs/loader:935:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:84:12)
+    at node:internal/main/run_main_module:23:47
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1768:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21) {
+  code: 'EACCES',
+  errno: -13,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 80
+}
+
+Node.js v19.4.0
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m

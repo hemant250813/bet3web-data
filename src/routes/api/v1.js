@@ -13,8 +13,12 @@ const {
 const {
   userRegistration,
   verifyEmail,
-  resendOtp
+  resendOtp,
 } = require("../../controllers/app/userController");
+
+const {
+  resulTransaction,
+} = require("../../controllers/app/transactionController");
 
 const authMiddleware = (() => {
   const chain = connect();
@@ -36,4 +40,6 @@ router.post("/registration", userRegistration);
 router.post("/otp-verify", verifyEmail);
 router.post("/resend-otp", resendOtp);
 
+// transaction
+router.post("/bet-placed", userTokenAuth, resulTransaction);
 module.exports = router;

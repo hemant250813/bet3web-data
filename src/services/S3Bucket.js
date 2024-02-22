@@ -52,7 +52,6 @@ module.exports = {
           }
         });
       } else {
-        console.log("pp");
         const newLocation =
           path.join(__dirname, "../../public/uploads") +
           "/" +
@@ -88,10 +87,6 @@ module.exports = {
    */
   removeOldImage: (file, storagePath, res) =>
     new Promise((resolve, reject) => {
-      console.log({
-        file: file,
-        storagePath: storagePath,
-      });
       if (process.env.S3_ENABLE === S3_ENABLE) {
         const params = {
           Bucket: `${process.env.AMZ_BUCKET}/${storagePath}`,

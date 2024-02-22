@@ -6,7 +6,6 @@ module.exports.issueUser = function (payload) {
     {
       exp: payload.exp,
       id: payload.id,
-      user_type: payload.user_type,
     },
     process.env.JWT_USER_SECRETKEY,
     { algorithm: "HS512" }

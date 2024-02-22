@@ -120,6 +120,12 @@ const userSchema = new mongoose.Schema(
       unique: true,
       maxLength: 100,
     },
+    type: {
+      type: Number,
+      enum: [1, 2],
+      required: true,
+      Comment: { admin: 1, user: 2 },
+    },
     email: {
       type: String,
       maxLength: 100,

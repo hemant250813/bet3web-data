@@ -4,6 +4,7 @@ const ip = require("ip");
 const axios = require("axios");
 const Response = require("../../services/Response");
 const Constants = require("../../services/Constants");
+const { ROLES, ACTIVE } = require("../../services/Constants");
 const {
   loginValidation,
   logoutAndBlockValidation,
@@ -11,7 +12,12 @@ const {
   changePasswordValidation,
 } = require("../../services/AdminValidation");
 const { Login } = require("../../transformers/admin/adminAuthTransformer");
-const { User, UserLoginHistory } = require("../../models");
+const {
+  User,
+  UserLoginHistory,
+  Transaction,
+  ResultTransaction,
+} = require("../../models");
 const { issueAdmin } = require("../../services/Admin_jwtToken");
 
 module.exports = {
@@ -27,27 +33,17 @@ module.exports = {
         if (validate) {
           let admin = await User.findOne({
             username: reqParam.username.toLowerCase(),
-            role: { $ne: Constants.ROLES.USER },
+            type: { $eq: 1 },
           });
 
           if (admin) {
-            if (admin?.status === Constants.ACTIVE) {
+            if (admin?.status === ACTIVE) {
               const comparePassword = await bcrypt.compare(
                 reqParam.password,
                 admin.password
               );
 
               if (comparePassword) {
-                console.log(admin.role);
-                if (admin.role === Constants.ROLES.ACCOUNTS_MANAGER) {
-                  admin = await admin.populate(
-                    "parents.parent_id",
-                    "balance username creditReference"
-                  );
-                  admin.creditReference =
-                    admin?.parents[0]?.parent_id?.creditReference;
-                  admin.balance = admin?.parents[0]?.parent_id?.balance;
-                }
                 const alreadyExitList = await User.find(
                   {},
                   { username: 1, email: 1, mobileNo: 1 }
@@ -64,16 +60,15 @@ module.exports = {
                   60 * 60 * 24 * process.env.SUPER_ADMIN_TOKEN_EXP;
 
                 const payload = {
-                  id: admin.id,
-                  role: admin.role,
+                  id: admin._id,
+                  type: admin.type,
                   exp: superAdminExpTime,
-                  sportShares: admin.sportShares,
                 };
                 const token = issueAdmin(payload);
                 const meta = { token };
 
                 let loginHistory = await UserLoginHistory.findOne({
-                  userId: admin.id,
+                  userId: admin._id,
                 });
                 let loginHistoryObject = {};
                 if (loginHistory) {
@@ -121,9 +116,14 @@ module.exports = {
 
                   await UserLoginHistory.create(loginHistoryObject);
                 }
-                console.log(admin, Login);
+
                 const adminObj = {
-                  admin: admin,
+                  name: admin.name,
+                  username: admin.username,
+                  type: admin.type,
+                  email: admin.email,
+                  mobileNo: admin.mobileNo,
+                  balance: admin.balance,
                   alreadyExitList: alreadyExitList,
                 };
                 return Response.successResponseData(
@@ -352,27 +352,59 @@ module.exports = {
    */
   authDetail: async (req, res) => {
     try {
-      const reqParam = req.query;
+      const { authAdminId } = req;
       let admin = await User.findOne({
-        username: reqParam.username.toLowerCase(),
-        role: { $ne: Constants.ROLES.USER },
+        _id: authAdminId,
+        type: { $eq: 1 },
       });
 
       const alreadyExitList = await User.find(
         {},
         { username: 1, email: 1, mobileNo: 1 }
       );
-      if (admin.role === Constants.ROLES.ACCOUNTS_MANAGER) {
-        admin = await admin.populate(
-          "parents.parent_id",
-          "balance username creditReference"
-        );
-        admin.creditReference = admin?.parents[0]?.parent_id?.creditReference;
-        admin.balance = admin?.parents[0]?.parent_id?.balance;
-      }
 
+      const transaction = await Transaction.find(
+        {},
+        { transaction_type: 1, amount: 1 }
+      );
+
+      const resultTransaction = await ResultTransaction.find(
+        {},
+        { pl: 1 }
+      );
+
+      const totalDeposit = transaction.reduce((accumulator, currentValue) => {
+        if (currentValue?.transaction_type === "deposit") {
+          let total = accumulator + currentValue?.amount;
+          return total;
+        }
+        
+        // Always return the accumulator if the condition is not met
+        return accumulator;
+      }, 0);
+
+      const totalWithdrawl = transaction.reduce((accumulator, currentValue) => {
+        if (currentValue?.transaction_type === "withdrawl") {
+          return accumulator + currentValue?.amount;
+        }
+        return accumulator;
+      }, 0);
+
+      const total_pl = resultTransaction.reduce((accumulator, currentValue) => {
+          return accumulator + currentValue?.pl;
+      }, 0);
+
+      console.log({totalDeposit:totalDeposit,totalWithdrawl:totalWithdrawl,total_pl:total_pl});
       const adminObj = {
-        admin: admin,
+        name: admin.name,
+        username: admin.username,
+        type: admin.type,
+        email: admin.email,
+        mobileNo: admin.mobileNo,
+        balance: admin.balance,
+        totalDeposit: totalDeposit,
+        totalWithdrawl: totalWithdrawl,
+        total_pl: total_pl,
         alreadyExitList: alreadyExitList,
       };
 
@@ -380,7 +412,7 @@ module.exports = {
         res,
         new Transformer.Single(adminObj, Login).parse(),
         Constants.SUCCESS,
-        res.locals.__("loginSuccess")
+        res.locals.__("success")
       );
     } catch (error) {
       return Response.errorResponseWithoutData(

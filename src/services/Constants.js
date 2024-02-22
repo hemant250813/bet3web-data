@@ -6,6 +6,7 @@ module.exports = {
   INTERNAL_SERVER: 500,
   NOT_ACCEPTABLE: 406,
   DATA_CONFLICT: 409,
+  UNAUTHENTICATED:401,
   CREATED: 201,
   FAIL: 400,
   ACTIVE: "1",
@@ -17,7 +18,7 @@ module.exports = {
   VERIFIED: "1",
   S3_ENABLE: "true",
   NOT_VERIFIED: "0",
-  BALANCE: 1000,
+  BALANCE: 0,
   MAIL_SUBJECT_MESSAGE_REGISTRATION:
     "Welcome to Our Platform - Registration Successful",
   MAIL_SUBJECT_MESSAGE_RESEND_OTP: "New OTP for verification",

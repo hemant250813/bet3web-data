@@ -1,8 +1,12 @@
 const Response = require("../services/Response");
 const jwToken = require("../services/User_jwtToken.js");
 const { User } = require("../models");
-const { INACTIVE, ACTIVE, INTERNAL_SERVER } = require("../services/Constants");
-const Constants = require("../services/Constants");
+const {
+  INACTIVE,
+  ACTIVE,
+  INTERNAL_SERVER,
+  UNAUTHENTICATED,
+} = require("../services/Constants");
 
 module.exports = {
   /**
@@ -12,7 +16,8 @@ module.exports = {
    */
   userTokenAuth: async (req, res, next) => {
     try {
-      const token = req.headers.authorization;
+      const token = req.headers.authorization.replace(/['"]+/g, '');
+      
       if (!token) {
         Response.errorResponseWithoutData(
           res,
@@ -25,7 +30,6 @@ module.exports = {
           const decoded = await jwToken.verify(tokenData);
           if (decoded.id) {
             req.authUserId = decoded.id;
-            req.user_type = decoded.user_type;
             // eslint-disable-next-line consistent-return
             const user = await User.findOne({ _id: req.authUserId });
             if (user) {

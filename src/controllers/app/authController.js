@@ -3,7 +3,13 @@ const ip = require("ip");
 const axios = require("axios");
 const bcrypt = require("bcrypt");
 const Response = require("../../services/Response");
-const Constants = require("../../services/Constants");
+const {
+  SUCCESS,
+  INTERNAL_SERVER,
+  ACTIVE,
+  FAIL,
+  BAD_REQUEST,
+} = require("../../services/Constants");
 const Helper = require("../../services/Helper");
 const Mailer = require("../../services/Mailer");
 const {
@@ -14,7 +20,7 @@ const {
 } = require("../../services/UserValidation");
 const { changePasswordValidation } = require("../../services/AdminValidation");
 const { Login } = require("../../transformers/user/userAuthTransformer");
-const { User, Otp } = require("../../models");
+const { User, Otp, Transaction, ResultTransaction } = require("../../models");
 const { issueUser } = require("../../services/User_jwtToken");
 const { app } = require("../../../server.js");
 
@@ -27,33 +33,40 @@ module.exports = {
   login: async (req, res) => {
     try {
       const reqParam = req.body;
-      console.log("reqParam", reqParam);
       loginValidation(reqParam, res, async (validate) => {
         if (validate) {
-          const user = await User.findOne({
-            email: reqParam.email.toLowerCase(),
-          });
+          let findQuery = {};
+
+          findQuery = {
+            $or: [
+              { email: { $eq: reqParam.user } },
+              { username: { $eq: reqParam.user } },
+            ],
+          };
+
+          const user = await User.findOne(findQuery);
 
           let browser_ip =
             req.headers["x-forwarded-for"] || req.connection.remoteAddress;
 
           const system_ip = req.clientIp;
           if (user) {
-            if (user?.status === Constants.ACTIVE) {
+            if (user?.status === ACTIVE) {
               const comparePassword = await bcrypt.compare(
                 reqParam.password,
                 user.password
               );
               if (comparePassword) {
-                const userExpTime = Math.floor(Date.now() / 1000) + 3600;
+                const USER_TOKEN_EXPIRY_TIME =
+                  Math.floor(Date.now() / 1000) +
+                  60 * 60 * 24 * process.env.USER_TOKEN_EXP;
 
                 const payload = {
                   id: user._id,
-                  exp: userExpTime,
+                  exp: USER_TOKEN_EXPIRY_TIME,
                 };
-                console.log("payload",payload);
+
                 const token = issueUser(payload);
-                console.log("token",token);
                 const meta = { token };
                 let tokenUpdate = {};
 
@@ -71,7 +84,7 @@ module.exports = {
                 return Response.successResponseData(
                   res,
                   new Transformer.Single(user, Login).parse(),
-                  Constants.SUCCESS,
+                  SUCCESS,
                   res.locals.__("loginSuccess"),
                   meta
                 );
@@ -79,21 +92,21 @@ module.exports = {
                 return Response.errorResponseWithoutData(
                   res,
                   res.locals.__("emailPasswordNotMatch"),
-                  Constants.BAD_REQUEST
+                  BAD_REQUEST
                 );
               }
             } else {
               Response.errorResponseWithoutData(
                 res,
                 res.locals.__("accountIsInactive"),
-                Constants.FAIL
+                FAIL
               );
             }
           } else {
             Response.errorResponseWithoutData(
               res,
               res.locals.__("userNameNotExist"),
-              Constants.FAIL
+              FAIL
             );
           }
         }
@@ -102,7 +115,7 @@ module.exports = {
       return Response.errorResponseData(
         res,
         res.__("internalError"),
-        Constants.INTERNAL_SERVER
+        INTERNAL_SERVER
       );
     }
   },
@@ -115,7 +128,6 @@ module.exports = {
   forgotPassword: async (req, res) => {
     try {
       const reqParam = req.body;
-      console.log("forgotPassword", reqParam);
       forgotPasswordValidation(reqParam, res, async (validate) => {
         if (validate) {
           const minutesLater = new Date();
@@ -133,7 +145,7 @@ module.exports = {
               appName: Helper.AppName,
               otp,
             };
-            if (user?.status === Constants.ACTIVE) {
+            if (user?.status === ACTIVE) {
               await User.updateOne(
                 { _id: user._id },
                 {
@@ -154,31 +166,27 @@ module.exports = {
               return Response.successResponseData(
                 res,
                 otp,
-                Constants.SUCCESS,
+                SUCCESS,
                 res.locals.__("forgotPasswordEmailSendSuccess")
               );
             } else {
               Response.errorResponseWithoutData(
                 res,
                 res.locals.__("accountIsInactive"),
-                Constants.FAIL
+                FAIL
               );
             }
           } else {
             Response.errorResponseWithoutData(
               res,
               res.locals.__("emailNotExists"),
-              Constants.FAIL
+              FAIL
             );
           }
         }
       });
     } catch (error) {
-      return Response.errorResponseData(
-        res,
-        error.message,
-        Constants.INTERNAL_SERVER
-      );
+      return Response.errorResponseData(res, error.message, INTERNAL_SERVER);
     }
   },
 
@@ -190,10 +198,8 @@ module.exports = {
   resetPassword: async (req, res) => {
     try {
       const reqParam = req.body;
-      console.log("resetPassword", reqParam);
       resetPassValidation(reqParam, res, async (validate) => {
         if (validate) {
-          console.log("validate ");
           const valid = await User.findOne(
             { email: reqParam.email, otp: reqParam.otp },
             { otp: 1, email: 1, code_expiry: 1, password: 1 }
@@ -201,7 +207,6 @@ module.exports = {
           if (valid && reqParam.email === valid?.email) {
             if (valid.code_expiry != null) {
               if (valid.code_expiry.getTime() >= Date.now()) {
-                console.log("valid", valid?.password);
                 const passCheck = await bcrypt.compare(
                   reqParam.password,
                   valid?.password
@@ -215,44 +220,40 @@ module.exports = {
                   return Response.successResponseWithoutData(
                     res,
                     res.locals.__("PasswordResetSuccessfully"),
-                    Constants.SUCCESS
+                    SUCCESS
                   );
                 } else {
                   return Response.errorResponseWithoutData(
                     res,
                     res.locals.__("thisPasswordnotallowed"),
-                    Constants.BAD_REQUEST
+                    BAD_REQUEST
                   );
                 }
               } else {
                 return Response.errorResponseWithoutData(
                   res,
                   res.locals.__("otpExpired"),
-                  Constants.BAD_REQUEST
+                  BAD_REQUEST
                 );
               }
             } else {
               return Response.errorResponseWithoutData(
                 res,
                 res.locals.__("invalidOtp"),
-                Constants.BAD_REQUEST
+                BAD_REQUEST
               );
             }
           } else {
             return Response.errorResponseWithoutData(
               res,
               res.locals.__("invalidOtp"),
-              Constants.BAD_REQUEST
+              BAD_REQUEST
             );
           }
         }
       });
     } catch (error) {
-      return Response.errorResponseData(
-        res,
-        error.message,
-        Constants.INTERNAL_SERVER
-      );
+      return Response.errorResponseData(res, error.message, INTERNAL_SERVER);
     }
   },
 
@@ -271,7 +272,7 @@ module.exports = {
           if (requestParams.old_password !== requestParams.password) {
             if (requestParams.password === requestParams.confirm_password) {
               const userData = await User.findOne(
-                { _id: authUserId, role: Constants?.ROLES?.USER },
+                { _id: authUserId, role: ROLES?.USER },
                 { password: 1 }
               );
               if (userData) {
@@ -296,34 +297,34 @@ module.exports = {
                   return Response.successResponseWithoutData(
                     res,
                     res.locals.__("passwordChanged"),
-                    Constants.SUCCESS
+                    SUCCESS
                   );
                 } else {
                   return Response.errorResponseWithoutData(
                     res,
                     res.locals.__("incorrectPassword"),
-                    Constants.BAD_REQUEST
+                    BAD_REQUEST
                   );
                 }
               } else {
                 return Response.errorResponseWithoutData(
                   res,
                   res.locals.__("youarenotauthenticated"),
-                  Constants.BAD_REQUEST
+                  BAD_REQUEST
                 );
               }
             } else {
               return Response.errorResponseWithoutData(
                 res,
                 res.locals.__("password&ConfirmPasswordDoesNotMatch"),
-                Constants.BAD_REQUEST
+                BAD_REQUEST
               );
             }
           } else {
             return Response.errorResponseWithoutData(
               res,
               res.locals.__("thisPasswordnotallowed"),
-              Constants.BAD_REQUEST
+              BAD_REQUEST
             );
           }
         }
@@ -332,7 +333,7 @@ module.exports = {
       return Response.errorResponseData(
         res,
         res.__("internalError"),
-        Constants.INTERNAL_SERVER
+        INTERNAL_SERVER
       );
     }
   },
@@ -362,7 +363,7 @@ module.exports = {
           return Response.successResponseWithoutData(
             res,
             res.locals.__("logout"),
-            Constants.SUCCESS
+            SUCCESS
           );
         }
       });
@@ -370,7 +371,7 @@ module.exports = {
       return Response.errorResponseWithoutData(
         res,
         res.locals.__("internalError"),
-        Constants.INTERNAL_SERVER
+        INTERNAL_SERVER
       );
     }
   },
@@ -382,27 +383,80 @@ module.exports = {
    */
   getUserDetail: async (req, res) => {
     try {
-      console.log("getUserDetail");
       const { authUserId } = req;
 
       const user = await User.findOne({
-        $and: [
-          { status: { $eq: Constants?.ACTIVE } },
-          { _id: { $eq: authUserId } },
-        ],
+        $and: [{ status: { $eq: ACTIVE } }, { _id: { $eq: authUserId } }],
       });
-console.log("user",user);
-      Response.successResponseData(
-        res,
-        user,
-        Constants.SUCCESS,
-        res.__("success")
+
+      const transaction = await Transaction.find(
+        {
+          $or: [{ fromId: { $in: authUserId } }, { toId: { $in: authUserId } }],
+        },
+        { transaction_type: 1, amount: 1 }
       );
+
+      const resultTransaction = await ResultTransaction.find(
+        { userId: authUserId },
+        { pl: 1 }
+      );
+
+      const totalDeposit = transaction.reduce((accumulator, currentValue) => {
+        if (currentValue?.transaction_type === "deposit") {
+          let total = accumulator + currentValue?.amount;
+          return total;
+        }
+
+        // Always return the accumulator if the condition is not met
+        return accumulator;
+      }, 0);
+
+      const totalWithdrawl = transaction.reduce((accumulator, currentValue) => {
+        if (currentValue?.transaction_type === "withdrawl") {
+          return accumulator + currentValue?.amount;
+        }
+        return accumulator;
+      }, 0);
+
+      const total_pl = resultTransaction.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue?.pl;
+      }, 0);
+
+      const total_win = resultTransaction.reduce((accumulator, currentValue) => {
+        if (currentValue?.transaction_type === "win") {
+          return accumulator + currentValue?.amount;
+        }
+        return accumulator;
+      }, 0);
+
+      const total_loss = resultTransaction.reduce((accumulator, currentValue) => {
+        if (currentValue?.transaction_type === "loss") {
+          return accumulator + currentValue?.amount;
+        }
+        return accumulator;
+      }, 0);
+
+      const userObj = {
+        name: user.name,
+        username: user.username,
+        type: user.type,
+        email: user.email,
+        mobileNo: user.mobileNo,
+        balance: user.balance,
+        totalDeposit: totalDeposit,
+        totalWithdrawl: totalWithdrawl,
+        total_pl: total_pl,
+        total_win: total_win,
+        total_loss: total_loss,
+      };
+
+      Response.successResponseData(res, userObj, SUCCESS, res.__("success"));
     } catch (error) {
+      console.log("error", error);
       return Response.errorResponseWithoutData(
         res,
         res.locals.__("internalError"),
-        Constants.INTERNAL_SERVER
+        INTERNAL_SERVER
       );
     }
   },

@@ -3,7 +3,6 @@ const path = require("path");
 const fs = require("fs");
 const { s3 } = require("../config/aws");
 const { S3_ENABLE } = require("./Constants");
-const Response = require("./Response");
 
 module.exports = {
   /**

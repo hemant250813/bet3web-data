@@ -1,12 +1,8 @@
-const Transformer = require("object-transformer");
 const bcrypt = require("bcrypt");
-const ip = require("ip");
-const axios = require("axios");
 const Response = require("../../services/Response");
 const Constants = require("../../services/Constants");
-const { ROLES, ACTIVE, TRANSACTION_TYPE } = require("../../services/Constants");
+const {  TRANSACTION_TYPE } = require("../../services/Constants");
 const { transactionValidation } = require("../../services/AdminValidation");
-const { Login } = require("../../transformers/admin/adminAuthTransformer");
 const { User, Transaction, ResultTransaction } = require("../../models");
 
 module.exports = {
@@ -113,7 +109,6 @@ module.exports = {
         }
       });
     } catch (error) {
-      console.log("error", error);
       return Response.errorResponseWithoutData(
         res,
         res.locals.__("internalError"),
@@ -151,7 +146,7 @@ module.exports = {
           };
         } else if (reqParam?.lose === "true") {
           resultTransactionQuery = {
-            result: "loss",
+            result: "lose",
             game: reqParam?.game_name,
           };
         }
@@ -162,7 +157,7 @@ module.exports = {
           };
         } else if (reqParam?.lose === "true") {
           resultTransactionQuery = {
-            result: "loss",
+            result: "lose",
           };
         }
       }
@@ -259,7 +254,7 @@ module.exports = {
           to: transaction?.to,
           desc: transaction?.desc,
           cr:
-            transaction?.type === "loss"
+            transaction?.type === "lose"
               ? transaction?.amount
               : transaction?.type === "withdrawl"
               ? transaction?.amount

@@ -1,6 +1,5 @@
 var nodemailer = require('nodemailer');
 var Email = require('email-templates');
-const Helpers = require('./Helper');
 
 module.exports = {
     sendMail: async (toEmail, mailSubject, templateName, locale) => {

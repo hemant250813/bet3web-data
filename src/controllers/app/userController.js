@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const moment = require("moment");
 const Response = require("../../services/Response");
@@ -8,10 +7,7 @@ const {
   SUCCESS,
   MAIL_SUBJECT_MESSAGE_REGISTRATION,
   MAIL_SUBJECT_MESSAGE_RESEND_OTP,
-  VERIFY_EMAIL,
   FAIL,
-  BAD_REQUEST,
-  GALLERY,
   BALANCE,
 } = require("../../services/Constants");
 const {
@@ -19,7 +15,6 @@ const {
   AppName,
   newRegistration,
   resendOtp,
-  verifyEmail,
 } = require("../../services/Helper");
 const Mailer = require("../../services/Mailer");
 const { User, Otp } = require("../../models");

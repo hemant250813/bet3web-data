@@ -1,25 +1,25 @@
 const Transformer = require("object-transformer");
 const bcrypt = require("bcrypt");
-const ip = require("ip");
-const axios = require("axios");
 const Response = require("../../services/Response");
 const Constants = require("../../services/Constants");
-const { ROLES, ACTIVE, SUCCESS, INTERNAL_SERVER } = require("../../services/Constants");
+const {
+  SUCCESS,
+  INTERNAL_SERVER,
+  FAIL,
+} = require("../../services/Constants");
 const {
   loginValidation,
-  logoutAndBlockValidation,
   resetPasswordValidation,
   changePasswordValidation,
+  logoutValidation
 } = require("../../services/AdminValidation");
 const { Login } = require("../../transformers/admin/adminAuthTransformer");
 const { LoginUser } = require("../../transformers/user/userAuthTransformer");
 const {
   User,
-  UserLoginHistory,
   Transaction,
   ResultTransaction,
 } = require("../../models");
-const { issueAdmin } = require("../../services/Admin_jwtToken");
 const { authLogin, userLogin } = require("../auth");
 
 module.exports = {
@@ -41,23 +41,64 @@ module.exports = {
           );
 
           if (user?.type === 1) {
-            let authData = await authLogin(req,reqParam);
-            return Response.successResponseData(
-              res,
-              new Transformer.Single(authData?.adminObj, Login).parse(),
-              SUCCESS,
-              res.locals.__("loginSuccess"),
-              authData?.meta
-            );
+            let authData = await authLogin(req, res, reqParam);
+      
+            if (authData === "accountIsInactive") {
+              Response.errorResponseWithoutData(
+                res,
+                res.locals.__("accountIsInactive"),
+                FAIL
+              );
+            } else if (authData === "userNamePasswordNotMatch") {
+              return Response.errorResponseWithoutData(
+                res,
+                res.locals.__("userNamePasswordNotMatch"),
+                BAD_REQUEST
+              );
+            } else if (authData === "userNameNotExist") {
+              Response.errorResponseWithoutData(
+                res,
+                res.locals.__("userNameNotExist"),
+                FAIL
+              );
+            } else {
+              return Response.successResponseData(
+                res,
+                new Transformer.Single(authData?.adminObj, Login).parse(),
+                SUCCESS,
+                res.locals.__("loginSuccess"),
+                authData?.meta
+              );
+            }
           } else {
-            let userData = await userLogin(req,reqParam);
-            return Response.successResponseData(
-              res,
-              new Transformer.Single(userData?.user, LoginUser).parse(),
-              SUCCESS,
-              res.locals.__("loginSuccess"),
-              userData?.meta
-            );
+            let userData = await userLogin(req, res, reqParam);
+            if (userData === "accountIsInactive") {
+              Response.errorResponseWithoutData(
+                res,
+                res.locals.__("accountIsInactive"),
+                FAIL
+              );
+            } else if (userData === "emailPasswordNotMatch") {
+              return Response.errorResponseWithoutData(
+                res,
+                res.locals.__("emailPasswordNotMatch"),
+                BAD_REQUEST
+              );
+            } else if (userData === "userNameNotExist") {
+              Response.errorResponseWithoutData(
+                res,
+                res.locals.__("userNameNotExist"),
+                FAIL
+              );
+            } else {
+              return Response.successResponseData(
+                res,
+                new Transformer.Single(userData?.user, LoginUser).parse(),
+                SUCCESS,
+                res.locals.__("loginSuccess"),
+                userData?.meta
+              );
+            }
           }
         }
       });
@@ -250,6 +291,43 @@ module.exports = {
     }
   },
 
+   /**
+   * @description "This function is to logout user."
+   * @param req
+   * @param res
+   */
+   logout: async (req, res) => {
+    try {
+      const requestParams = req.body;
+      logoutValidation(requestParams, res, async (validate) => {
+        if (validate) {
+          await User.updateOne(
+            { username: requestParams.user_id },
+            {
+              $set: {
+                token: null,
+                "ip_address.system_ip": null,
+                "ip_address.browser_ip": null,
+              },
+            }
+          );
+
+          return Response.successResponseWithoutData(
+            res,
+            res.locals.__("logout"),
+            SUCCESS
+          );
+        }
+      });
+    } catch (error) {
+      return Response.errorResponseWithoutData(
+        res,
+        res.locals.__("internalError"),
+        INTERNAL_SERVER
+      );
+    }
+  },
+
   /**
    * @description "This function is to get auth detail."
    * @param req
@@ -296,11 +374,6 @@ module.exports = {
         return accumulator + currentValue?.pl;
       }, 0);
 
-      console.log({
-        totalDeposit: totalDeposit,
-        totalWithdrawl: totalWithdrawl,
-        total_pl: total_pl,
-      });
       const adminObj = {
         name: admin.name,
         username: admin.username,

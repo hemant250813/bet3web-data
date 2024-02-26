@@ -1,16 +1,10 @@
-const Transformer = require("object-transformer");
-const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
-const ip = require("ip");
-const axios = require("axios");
 const Response = require("../../services/Response");
 const Constants = require("../../services/Constants");
-const { ROLES, ACTIVE, TRANSACTION_TYPE } = require("../../services/Constants");
 const {
   resultTransactionValidation,
 } = require("../../services/UserValidation");
-const { Login } = require("../../transformers/admin/adminAuthTransformer");
-const { User, Transaction, ResultTransaction } = require("../../models");
+const { User, ResultTransaction } = require("../../models");
 
 module.exports = {
   /**
@@ -24,6 +18,23 @@ module.exports = {
       const { authUserId } = req;
       resultTransactionValidation(reqParam, res, async (validate) => {
         if (validate) {
+          let user = await User.findOne(
+            {
+              _id: authUserId,
+            },
+            { balance: 1 }
+          );
+
+          let balance = user?.balance + parseInt(reqParam?.amount);
+          await User.updateOne(
+            { _id: user._id },
+            {
+              $set: {
+                balance: balance,
+              },
+            }
+          );
+
           const roundId = uuidv4();
           // CREATE OR UPDATE STATEMENT BY DESCRIPTION
           let description = new Date().toLocaleDateString().replace("/", "-");
@@ -39,12 +50,12 @@ module.exports = {
             if (final_pl >= 0) {
               final_result = "win";
             } else {
-              final_result = "loss";
+              final_result = "lose";
             }
             // UPDATE
             await checkRTxn.updateOne({
               pl: checkRTxn.pl + parseInt(reqParam?.amount),
-              result: reqParam?.result,
+              result: final_result,
             });
           } else {
             // CREATE

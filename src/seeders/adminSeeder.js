@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 require("dotenv").config({ path: "../../.env" });
-const { User, UserLoginHistory } = require("./../models");
+const { User, UserLoginHistory, GameSetting } = require("./../models");
 const logger = require("../logger/logger");
 config = require("../config/config").getConfig();
-const { ACTIVE } = require("../services/Constants");
+const { ACTIVE, GAME } = require("../services/Constants");
 
 const createAdmin = async () => {
   try {
@@ -30,7 +30,7 @@ const createAdmin = async () => {
         name: process.env.ADMIN_NAME,
         email: process.env.ADMIN_EMAIL,
         username: process.env.ADMIN_USERNAME,
-        status:ACTIVE,
+        status: ACTIVE,
         type: 1,
         creditReference: 1000000000.0,
         balance: 1000000000.0,
@@ -49,6 +49,16 @@ const createAdmin = async () => {
       );
 
       logger.info("admin data has been created :::");
+
+      await GameSetting.deleteMany({ delete: "dt" });
+
+      await GameSetting.bulkWrite(
+        GAME.map((data) => ({
+          insertOne: { document: data },
+        }))
+      );
+
+      logger.info("game data has been created :::");
     });
   } catch (error) {
     logger.error("Error", error);

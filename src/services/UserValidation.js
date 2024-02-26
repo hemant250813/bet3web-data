@@ -232,4 +232,23 @@ module.exports = {
     }
     return callback(true);
   },
+
+  /**
+   * @description This function is used to validate setting fields.
+   * @param req
+   * @param res
+   */
+  getSettingValidation: (req, res, callback) => {
+    const schema = Joi.object({
+      game: Joi.string().trim().required(),
+    });
+    const { error } = schema.validate(req);
+    if (error) {
+      return Response.validationErrorResponseData(
+        res,
+        res.__(Helper.validationMessageKey("getSettingValidation", error))
+      );
+    }
+    return callback(true);
+  },
 };

@@ -19,6 +19,13 @@ const {
   resulTransaction,
 } = require("../../controllers/app/transactionController");
 
+const { gameSetting } = require("../../controllers/app/settingController");
+
+const {
+  getQuestion,
+  questionResult,
+} = require("../../controllers/app/questionController");
+
 const authMiddleware = (() => {
   const chain = connect();
   [userTokenAuth].forEach((middleware) => {
@@ -33,6 +40,7 @@ router.post("/reset_password", resetPassword);
 router.post("/change_password", userTokenAuth, changePassword);
 router.post("/logout", logout);
 
+// user
 router.get("/get-user-detail", userTokenAuth, getUserDetail);
 router.post("/registration", userRegistration);
 router.post("/otp-verify", verifyEmail);
@@ -40,4 +48,11 @@ router.post("/resend-otp", resendOtp);
 
 // transaction
 router.post("/bet-placed", userTokenAuth, resulTransaction);
+
+// setting
+router.get("/get-setting", userTokenAuth, gameSetting);
+
+// question
+router.get("/question", userTokenAuth, getQuestion);
+router.post("/question-result", userTokenAuth, questionResult);
 module.exports = router;

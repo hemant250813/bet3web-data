@@ -7,6 +7,7 @@ const {
   resetPassword,
   changePassword,
   authDetail,
+  logout,
 } = require("../../controllers/admin/authController");
 
 const {
@@ -18,6 +19,15 @@ const {
   getUsers,
   activeDeActivateUser,
 } = require("../../controllers/admin/userController");
+
+const { setting } = require("../../controllers/admin/settingController");
+
+const {
+  question,
+  getQuestion,
+} = require("../../controllers/admin/questionController");
+
+const { result, getResult } = require("../../controllers/admin/resultController");
 
 const authMiddleware = (() => {
   const chain = connect();
@@ -31,19 +41,33 @@ const authMiddleware = (() => {
 router.post("/login", loginSwitch);
 router.get("/auth-detail", adminTokenAuth, authDetail);
 router.post("/reset-password", adminTokenAuth, resetPassword);
-router.post("/change-password", adminTokenAuth, changePassword);
 
 //update status and delete user
 // router.get("/login-history", adminTokenAuth, loginHistory);
 
 // user
+router.post("/logout", adminTokenAuth, logout);
+router.post("/change-password", adminTokenAuth, changePassword);
 router.get("/user", adminTokenAuth, getUsers);
 router.post(
   "/activate-deactivate-status",
   adminTokenAuth,
   activeDeActivateUser
 );
+
 // transaction
 router.post("/transaction", adminTokenAuth, transaction);
 router.get("/get-report", adminTokenAuth, resulTransaction);
+
+// setting
+router.post("/game-setting", adminTokenAuth, setting);
+
+// question
+router.post("/question", adminTokenAuth, question);
+router.get("/question", adminTokenAuth, getQuestion);
+
+// result
+router.post("/result", adminTokenAuth, result);
+router.get("/get-result", adminTokenAuth, getResult);
+
 module.exports = router;

@@ -37,7 +37,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "start": "PORT=80 nohup nodemon server.js&",
-    "seeder": "cd src/seeders && node adminSeeder.js "
+    "seeder": "cd src/seeders && node adminSeeder.js && node gameSeeder.js"
   },
   "name": "exchangebook",
   "description": "",

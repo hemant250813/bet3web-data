@@ -138,4 +138,46 @@ module.exports = {
     }
     return callback(true);
   },
+
+  /**
+   * @description This function is used to validate setting fields.
+   * @param req
+   * @param res
+   */
+  settingValidation: (req, res, callback) => {
+    const schema = Joi.object({
+      game: Joi.string().trim().required(),
+      min: Joi.number().required(),
+      max: Joi.number().required(),
+      probability: Joi.number().required(),
+      odd: Joi.number().required(),
+    });
+    const { error } = schema.validate(req);
+    if (error) {
+      return Response.validationErrorResponseData(
+        res,
+        res.__(Helper.validationMessageKey("gameSettingValidation", error))
+      );
+    }
+    return callback(true);
+  },
+
+  /**
+   * @description This function is used to validate logout field ID.
+   * @param req
+   * @param res
+   */
+  logoutValidation: (req, res, callback) => {
+    const schema = Joi.object({
+      user_id: Joi.string().trim().required(),
+    });
+    const { error } = schema.validate(req);
+    if (error) {
+      return Response.validationErrorResponseData(
+        res,
+        res.__(Helper.validationMessageKey("logoutValidation", error))
+      );
+    }
+    return callback(true);
+  },
 };

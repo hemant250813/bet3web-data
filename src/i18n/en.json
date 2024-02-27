@@ -28,5 +28,6 @@
 	"activated": "User has been activated.",
 	"withdrawn": "withdrawn",
 	"accountIsInactive": "accountIsInactive",
-	"gameSettingValidationOddUnknown": "gameSettingValidationOddUnknown"
+	"gameSettingValidationOddUnknown": "gameSettingValidationOddUnknown",
+	"resultTransactionValidationInvestUnknown": "resultTransactionValidationInvestUnknown"
 }

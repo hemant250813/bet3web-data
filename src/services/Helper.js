@@ -126,7 +126,8 @@ module.exports = {
       // return true;
       if (checkRTxn != null) {
         let final_result = "";
-        let final_pl = checkRTxn.pl + parseInt(amount);
+        let final_pl = checkRTxn.pl + amount;
+        let final_amount = checkRTxn.amount + amount;
         if (final_pl >= 0) {
           final_result = "win";
         } else {
@@ -135,8 +136,9 @@ module.exports = {
 
         // UPDATE
         await checkRTxn.updateOne({
-          pl: checkRTxn.pl + parseInt(amount),
+          pl: checkRTxn.pl + amount,
           result: final_result,
+          amount: final_amount,
         });
         return true;
       } else {
@@ -145,9 +147,10 @@ module.exports = {
           userId: data?.userId,
           description: modifiedDescription,
           game: "question_and_answer",
-          pl: parseInt(amount),
+          pl: amount,
           result: result,
           roundId: roundId,
+          amount: amount,
         });
 
         return true;

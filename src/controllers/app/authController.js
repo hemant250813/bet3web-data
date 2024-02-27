@@ -295,7 +295,7 @@ module.exports = {
 
       const resultTransaction = await ResultTransaction.find(
         { userId: authUserId },
-        { pl: 1 }
+        { pl: 1, result:1, amount:1 }
       );
 
       const totalDeposit = transaction.reduce((accumulator, currentValue) => {
@@ -315,24 +315,24 @@ module.exports = {
         return accumulator;
       }, 0);
 
-      const total_pl = resultTransaction.reduce((accumulator, currentValue) => {
-        return accumulator + currentValue?.pl;
+      const total_invest = resultTransaction.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue?.amount;
       }, 0);
 
       const total_win = resultTransaction.reduce((accumulator, currentValue) => {
-        if (currentValue?.transaction_type === "win") {
-          return accumulator + currentValue?.amount;
+        if (currentValue?.result === "win") {
+          return accumulator + currentValue?.pl;
         }
         return accumulator;
       }, 0);
 
       const total_loss = resultTransaction.reduce((accumulator, currentValue) => {
-        if (currentValue?.transaction_type === "loss") {
-          return accumulator + currentValue?.amount;
+        if (currentValue?.result === "lose") {
+          return accumulator + currentValue?.pl;
         }
         return accumulator;
       }, 0);
-
+console.log({total_win:total_win,total_loss:total_loss});
       const userObj = {
         id: user._id,
         name: user.name,
@@ -344,7 +344,7 @@ module.exports = {
         type: user.type,
         totalDeposit: totalDeposit,
         totalWithdrawl: totalWithdrawl,
-        total_pl: total_pl,
+        total_invest: total_invest,
         total_win: total_win,
         total_loss: total_loss,
       };

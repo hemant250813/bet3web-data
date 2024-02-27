@@ -219,6 +219,7 @@ module.exports = {
    */
   resultTransactionValidation: (req, res, callback) => {
     const schema = Joi.object({
+      invest: Joi.number().required(),
       amount: Joi.number().required(),
       result: Joi.string().trim().required(),
       game: Joi.string().trim().required(),

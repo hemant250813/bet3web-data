@@ -15,6 +15,7 @@ module.exports = {
   resulTransaction: async (req, res) => {
     try {
       const reqParam = req.body;
+      console.log("resulTransaction",reqParam);
       const { authUserId } = req;
       resultTransactionValidation(reqParam, res, async (validate) => {
         if (validate) {
@@ -47,6 +48,7 @@ module.exports = {
           if (checkRTxn != null) {
             let final_result = "";
             let final_pl = checkRTxn.pl + parseInt(reqParam?.amount);
+            let final_amount = checkRTxn.amount + parseInt(reqParam?.invest);
             if (final_pl >= 0) {
               final_result = "win";
             } else {
@@ -56,6 +58,7 @@ module.exports = {
             await checkRTxn.updateOne({
               pl: checkRTxn.pl + parseInt(reqParam?.amount),
               result: final_result,
+              amount: final_amount,
             });
           } else {
             // CREATE
@@ -66,6 +69,7 @@ module.exports = {
               pl: parseInt(reqParam?.amount),
               result: reqParam?.result,
               roundId: roundId,
+              amount: parseInt(reqParam?.invest),
             });
           }
           return Response.successResponseWithoutData(

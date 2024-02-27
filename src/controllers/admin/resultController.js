@@ -25,7 +25,7 @@ module.exports = {
           let pl = 0;
           if (element?.answer === reqParam?.answer) {
             // win
-            pl = element?.amount * element?.odd;
+            pl = parseInt(element?.amount) * element?.odd;
             let data = await resultTransactionQuestion(res, element, pl, "win");
           } else {
             // lose

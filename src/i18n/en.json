@@ -26,5 +26,8 @@
 	"activeDeActivateValidationUseridRequired": "activeDeActivateValidationUseridRequired",
 	"deActivated": "User has been deActivated.",
 	"activated": "User has been activated.",
-	"withdrawn": "withdrawn"
+	"withdrawn": "withdrawn",
+	"accountIsInactive": "accountIsInactive",
+	"gameSettingValidationOddUnknown": "gameSettingValidationOddUnknown",
+	"resultTransactionValidationInvestUnknown": "resultTransactionValidationInvestUnknown"
 }

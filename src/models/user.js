@@ -14,6 +14,9 @@ const resultTransactionSchema = new mongoose.Schema(
     pl: {
       type: Number,
     },
+    amount: {
+      type: Number,
+    },
     game: {
       type: String,
       enum: [
@@ -25,6 +28,7 @@ const resultTransactionSchema = new mongoose.Schema(
         "card_finding",
         "number_slot",
         "number_pool",
+        "question_and_answer",
       ],
       maxLength: 100,
     },
@@ -34,7 +38,7 @@ const resultTransactionSchema = new mongoose.Schema(
     },
     result: {
       type: String,
-      enum: ["win", "loss"],
+      enum: ["win", "lose"],
       maxLength: 30,
     },
     createDate: "date",

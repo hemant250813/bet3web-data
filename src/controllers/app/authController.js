@@ -1,6 +1,3 @@
-const Transformer = require("object-transformer");
-const ip = require("ip");
-const axios = require("axios");
 const bcrypt = require("bcrypt");
 const Response = require("../../services/Response");
 const {
@@ -13,16 +10,12 @@ const {
 const Helper = require("../../services/Helper");
 const Mailer = require("../../services/Mailer");
 const {
-  loginValidation,
   logoutValidation,
   forgotPasswordValidation,
   resetPassValidation,
 } = require("../../services/UserValidation");
 const { changePasswordValidation } = require("../../services/AdminValidation");
-const { Login } = require("../../transformers/user/userAuthTransformer");
-const { User, Otp, Transaction, ResultTransaction } = require("../../models");
-const { issueUser } = require("../../services/User_jwtToken");
-const { app } = require("../../../server.js");
+const { User, Transaction, ResultTransaction } = require("../../models");
 
 module.exports = {
   /**
@@ -251,7 +244,6 @@ module.exports = {
   logout: async (req, res) => {
     try {
       const requestParams = req.body;
-      console.log("requestParams logout", requestParams);
       logoutValidation(requestParams, res, async (validate) => {
         if (validate) {
           await User.updateOne(
@@ -303,7 +295,7 @@ module.exports = {
 
       const resultTransaction = await ResultTransaction.find(
         { userId: authUserId },
-        { pl: 1 }
+        { pl: 1, result:1, amount:1 }
       );
 
       const totalDeposit = transaction.reduce((accumulator, currentValue) => {
@@ -323,25 +315,26 @@ module.exports = {
         return accumulator;
       }, 0);
 
-      const total_pl = resultTransaction.reduce((accumulator, currentValue) => {
-        return accumulator + currentValue?.pl;
+      const total_invest = resultTransaction.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue?.amount;
       }, 0);
 
       const total_win = resultTransaction.reduce((accumulator, currentValue) => {
-        if (currentValue?.transaction_type === "win") {
-          return accumulator + currentValue?.amount;
+        if (currentValue?.result === "win") {
+          return accumulator + currentValue?.pl;
         }
         return accumulator;
       }, 0);
 
       const total_loss = resultTransaction.reduce((accumulator, currentValue) => {
-        if (currentValue?.transaction_type === "loss") {
-          return accumulator + currentValue?.amount;
+        if (currentValue?.result === "lose") {
+          return accumulator + currentValue?.pl;
         }
         return accumulator;
       }, 0);
-
+console.log({total_win:total_win,total_loss:total_loss});
       const userObj = {
+        id: user._id,
         name: user.name,
         username: user.username,
         type: user.type,
@@ -351,14 +344,13 @@ module.exports = {
         type: user.type,
         totalDeposit: totalDeposit,
         totalWithdrawl: totalWithdrawl,
-        total_pl: total_pl,
+        total_invest: total_invest,
         total_win: total_win,
         total_loss: total_loss,
       };
 
       Response.successResponseData(res, userObj, SUCCESS, res.__("success"));
     } catch (error) {
-      console.log("error", error);
       return Response.errorResponseWithoutData(
         res,
         res.locals.__("internalError"),

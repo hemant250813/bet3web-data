@@ -1,13 +1,8 @@
 const bcrypt = require("bcrypt");
 const ip = require("ip");
-const axios = require("axios");
 const { User, UserLoginHistory } = require("../models");
 const {
-  ROLES,
   ACTIVE,
-  SUCCESS,
-  BAD_REQUEST,
-  FAIL,
 } = require("../services/Constants");
 const { issueAdmin } = require("../services/Admin_jwtToken");
 const { issueUser } = require("../services/User_jwtToken");
@@ -18,7 +13,7 @@ module.exports = {
    * @param length
    * @returns {*}
    */
-  authLogin: async (req, reqParam) => {
+  authLogin: async (req, res, reqParam) => {
     let findQuery = {};
     findQuery = {
       $and: [
@@ -46,22 +41,24 @@ module.exports = {
             {},
             { username: 1, email: 1, mobileNo: 1 }
           );
-
+          
           let system_ip = ip.address(); //system ip address
-
-          let browser_ip = await axios.get(
-            "https://api.ipify.org/?format=json" //get browser ip address
-          );
+     
+          // let browser_ip = await axios.get(
+          //   "https://api.ipify.org/?format=json" //get browser ip address
+          // );
+          let browser_ip = "0.0.0.1"
 
           const superAdminExpTime =
             Math.floor(Date.now() / 1000) +
             60 * 60 * 24 * process.env.SUPER_ADMIN_TOKEN_EXP;
-
+           
           const payload = {
             id: admin._id,
             type: admin.type,
             exp: superAdminExpTime,
           };
+          
           const token = issueAdmin(payload);
           const meta = { token };
 
@@ -128,25 +125,13 @@ module.exports = {
           };
           return adminob;
         } else {
-          return Response.errorResponseWithoutData(
-            res,
-            res.locals.__("userNamePasswordNotMatch"),
-            BAD_REQUEST
-          );
+          return "userNamePasswordNotMatch";
         }
       } else {
-        Response.errorResponseWithoutData(
-          res,
-          res.locals.__("accountIsInactive"),
-          FAIL
-        );
+        return "accountIsInactive";
       }
     } else {
-      Response.errorResponseWithoutData(
-        res,
-        res.locals.__("userNameNotExist"),
-        FAIL
-      );
+      return "userNameNotExist";
     }
   },
 
@@ -155,9 +140,8 @@ module.exports = {
    * @param length
    * @returns {*}
    */
-  userLogin: async (req, reqParam) => {
+  userLogin: async (req, res, reqParam) => {
     let findQuery = {};
-
     findQuery = {
       $and: [
         { type: { $eq: 2 } },
@@ -171,7 +155,6 @@ module.exports = {
     };
 
     const user = await User.findOne(findQuery);
-
     let browser_ip =
       req.headers["x-forwarded-for"] || req.connection.remoteAddress;
 
@@ -213,25 +196,13 @@ module.exports = {
           };
           return userOb;
         } else {
-          return Response.errorResponseWithoutData(
-            res,
-            res.locals.__("emailPasswordNotMatch"),
-            BAD_REQUEST
-          );
+          return "emailPasswordNotMatch";
         }
       } else {
-        Response.errorResponseWithoutData(
-          res,
-          res.locals.__("accountIsInactive"),
-          FAIL
-        );
+        return "accountIsInactive";
       }
     } else {
-      Response.errorResponseWithoutData(
-        res,
-        res.locals.__("userNameNotExist"),
-        FAIL
-      );
+      return "userNameNotExist";
     }
   },
 };

@@ -114,7 +114,11 @@ const loginHistorySchema = new mongoose.Schema(
 // User
 const userSchema = new mongoose.Schema(
   {
-    name: {
+    firstName: {
+      type: String,
+      maxLength: 100,
+    },
+    lastName: {
       type: String,
       maxLength: 100,
     },
@@ -146,6 +150,22 @@ const userSchema = new mongoose.Schema(
     mobileNo: {
       type: Number,
       maxLength: 15,
+    },
+    address: {
+      type: String,
+      maxLength: 50,
+    },
+    state: {
+      type: String,
+      maxLength: 50,
+    },
+    zipCode: {
+      type: String,
+      maxLength: 50,
+    },
+    city: {
+      type: String,
+      maxLength: 50,
     },
     country: {
       type: String,

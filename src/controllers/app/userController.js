@@ -22,6 +22,7 @@ const {
   userRegisterValidation,
   resendOtpValidation,
   verifyOtpValidation,
+  editProfileValidation
 } = require("../../services/UserValidation");
 
 module.exports = {
@@ -283,6 +284,50 @@ module.exports = {
         }
       });
     } catch (error) {
+      return Response.errorResponseData(res, res.__("internalError"), error);
+    }
+  },
+
+  /**
+   * @description "This function is for re-send OTP."
+   * @param req
+   * @param res
+   */
+  editProfile: async (req, res) => {
+    try {
+      const requestParams = req.body;
+      const { authUserId } = req;
+      // Below function will validate all the fields which we are passing in the body.
+      editProfileValidation(requestParams, res, async (validate) => {
+        if (validate) {
+          let profile = {
+            firstName: requestParams.firstName,
+            lastName: requestParams.lastName,
+            email: requestParams.email,
+            mobileNo: requestParams.mobileNo,
+            address: requestParams.address,
+            state: requestParams.state,
+            zipCode: requestParams.zipCode,
+            city: requestParams.city,
+            country: requestParams.country,
+          };
+
+          await User.updateOne(
+            { _id: authUserId },
+            {
+              $set: profile,
+            }
+          );
+
+          return Response.successResponseWithoutData(
+            res,
+            res.locals.__("profileUpdated"),
+            SUCCESS
+          );
+        }
+      });
+    } catch (error) {
+      console.log("error",error);
       return Response.errorResponseData(res, res.__("internalError"), error);
     }
   },

@@ -13,6 +13,7 @@ const {
   userRegistration,
   verifyEmail,
   resendOtp,
+  editProfile,
 } = require("../../controllers/app/userController");
 
 const {
@@ -45,6 +46,7 @@ router.get("/get-user-detail", userTokenAuth, getUserDetail);
 router.post("/registration", userRegistration);
 router.post("/otp-verify", verifyEmail);
 router.post("/resend-otp", resendOtp);
+router.post("/edit-profile", userTokenAuth, editProfile);
 
 // transaction
 router.post("/bet-placed", userTokenAuth, resulTransaction);

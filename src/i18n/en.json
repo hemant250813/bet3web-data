@@ -29,5 +29,8 @@
 	"withdrawn": "withdrawn",
 	"accountIsInactive": "accountIsInactive",
 	"gameSettingValidationOddUnknown": "gameSettingValidationOddUnknown",
-	"resultTransactionValidationInvestUnknown": "resultTransactionValidationInvestUnknown"
+	"resultTransactionValidationInvestUnknown": "resultTransactionValidationInvestUnknown",
+	"editProfileValidationFirstnameRequired": "editProfileValidationFirstnameRequired",
+	"profileUpdated": "profileUpdated",
+	"editProfileValidationMobilenoBase": "editProfileValidationMobilenoBase"
 }

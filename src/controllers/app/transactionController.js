@@ -15,7 +15,6 @@ module.exports = {
   resulTransaction: async (req, res) => {
     try {
       const reqParam = req.body;
-      console.log("resulTransaction",reqParam);
       const { authUserId } = req;
       resultTransactionValidation(reqParam, res, async (validate) => {
         if (validate) {

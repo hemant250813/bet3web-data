@@ -228,7 +228,36 @@ module.exports = {
     if (error) {
       return Response.validationErrorResponseData(
         res,
-        res.__(Helper.validationMessageKey("resultTransactionValidation", error))
+        res.__(
+          Helper.validationMessageKey("resultTransactionValidation", error)
+        )
+      );
+    }
+    return callback(true);
+  },
+
+  /**
+   * @description This function is used to validate result transaction fields.
+   * @param req
+   * @param res
+   */
+  editProfileValidation: (req, res, callback) => {
+    const schema = Joi.object({
+      firstName: Joi.string().required(),
+      lastName: Joi.string().required(),
+      email: Joi.string().email().trim().required(),
+      mobileNo: Joi.string().trim().required(),
+      address: Joi.string().required(),
+      state: Joi.string().required(),
+      zipCode: Joi.string().trim().required(),
+      city: Joi.string().trim().required(),
+      country: Joi.string().trim().required(),
+    });
+    const { error } = schema.validate(req);
+    if (error) {
+      return Response.validationErrorResponseData(
+        res,
+        res.__(Helper.validationMessageKey("editProfileValidation", error))
       );
     }
     return callback(true);

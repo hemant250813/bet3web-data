@@ -160,7 +160,6 @@ module.exports = {
    * @param req
    * @param res
    */
-
   changePassword: async (req, res) => {
     try {
       const { authUserId } = req;
@@ -332,14 +331,19 @@ module.exports = {
         }
         return accumulator;
       }, 0);
-console.log({total_win:total_win,total_loss:total_loss});
+
       const userObj = {
         id: user._id,
-        name: user.name,
+        firstName: user.firstName,
+        lastName: user.lastName,
         username: user.username,
-        type: user.type,
         email: user.email,
         mobileNo: user.mobileNo,
+        address: user.address,
+        state: user.state,
+        zipCode: user.zipCode,
+        city: user.city,
+        country: user.country,
         balance: user.balance,
         type: user.type,
         totalDeposit: totalDeposit,

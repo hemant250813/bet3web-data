@@ -26,6 +26,11 @@ module.exports = {
           );
 
           let balance = user?.balance + parseInt(reqParam?.amount);
+          if (reqParam?.result === "win") {
+            balance = user?.balance + parseInt(reqParam?.amount);
+          } else {
+            balance = user?.balance + parseInt(reqParam?.amount);
+          }
           await User.updateOne(
             { _id: user._id },
             {

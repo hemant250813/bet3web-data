@@ -1,9 +1,7 @@
 const moment = require("moment");
 const Response = require("../../services/Response");
 const Constants = require("../../services/Constants");
-const {
-  SUCCESS,
-} = require("../../services/Constants");
+const { SUCCESS } = require("../../services/Constants");
 const { Question, QuestionResult, User } = require("../../models");
 const {
   resultTransactionQuestion,
@@ -19,13 +17,21 @@ module.exports = {
   result: async (req, res) => {
     try {
       const reqParam = req.body;
+      console.log("reqParam", reqParam);
       let questionResult = await QuestionResult?.find();
+      console.log("questionResult", questionResult);
       questionResult?.forEach(async (element) => {
         if (reqParam?.question === element?.questionSlug) {
           let pl = 0;
           if (element?.answer === reqParam?.answer) {
+            let odd =
+              element?.option1 === reqParam?.answer
+                ? element?.odd1
+                : element?.option2 === reqParam?.answer
+                ? element?.odd2
+                : element?.odd3;
             // win
-            pl = parseInt(element?.amount) * element?.odd;
+            pl = parseInt(element?.amount) * odd;
             let data = await resultTransactionQuestion(res, element, pl, "win");
           } else {
             // lose
@@ -98,25 +104,26 @@ module.exports = {
 
       let questionResult = await Question?.find(query);
 
-      
       if (questionResult) {
         questionResult = questionResult.map((question) => {
-          return({
+          return {
             _id: question?._id?.toString(),
             question: question?.question?.toString(),
             option1: question?.option1?.toString(),
             option2: question?.option2?.toString(),
             option3: question?.option3?.toString(),
-            odd: question?.odd?.toString(),
+            odd1: question?.odd1?.toString(),
+            odd2: question?.odd2?.toString(),
+            odd3: question?.odd3?.toString(),
             questionSlug: question?.questionSlug?.toString(),
-            createdAt: moment(question?.createdAt).format(
-              "YYYY-MM-DD HH:mm:ss"
-            )?.toString(),
-            updatedAt: moment(question?.updatedAt).format(
-              "YYYY-MM-DD HH:mm:ss"
-            )?.toString(),
+            createdAt: moment(question?.createdAt)
+              .format("YYYY-MM-DD HH:mm:ss")
+              ?.toString(),
+            updatedAt: moment(question?.updatedAt)
+              .format("YYYY-MM-DD HH:mm:ss")
+              ?.toString(),
             answer: question?.answer?.toString(),
-          })
+          };
         });
       }
 

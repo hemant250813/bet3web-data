@@ -16,6 +16,7 @@ module.exports = {
     try {
       const reqParam = req.query;
       getSettingValidation(reqParam, res, async (validate) => {
+        console.log("gameSetting",reqParam);
         if (validate) {
           let setting = await GameSetting.findOne({
             name: reqParam.game.toLowerCase(),

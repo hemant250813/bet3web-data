@@ -32,5 +32,16 @@
 	"resultTransactionValidationInvestUnknown": "resultTransactionValidationInvestUnknown",
 	"editProfileValidationFirstnameRequired": "editProfileValidationFirstnameRequired",
 	"profileUpdated": "profileUpdated",
-	"editProfileValidationMobilenoBase": "editProfileValidationMobilenoBase"
+	"editProfileValidationMobilenoBase": "editProfileValidationMobilenoBase",
+	"resultTransactionValidationInvestBase": "resultTransactionValidationInvestBase",
+	"depositValidationTransactionTypeRequired": "depositValidationTransactionTypeRequired",
+	"deleted": "deleted",
+	"depositValidationAmountRequired": "depositValidationAmountRequired",
+	"depositValidationAccountTypeUnknown": "depositValidationAccountTypeUnknown",
+	"withdrawalRequest": "withdrawalRequest",
+	"sliderAdded": "sliderAdded",
+	"acceptRejectRequestValidationIdRequired": "acceptRejectRequestValidationIdRequired",
+	"acceptRejectRequestValidationRequesttypeUnknown": "acceptRejectRequestValidationRequesttypeUnknown",
+	"verifyOtpValidationEmailBase": "verifyOtpValidationEmailBase",
+	"questionAdded": "Question has been added."
 }

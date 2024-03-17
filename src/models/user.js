@@ -29,6 +29,7 @@ const resultTransactionSchema = new mongoose.Schema(
         "number_slot",
         "number_pool",
         "question_and_answer",
+        "keno",
       ],
       maxLength: 100,
     },
@@ -78,26 +79,38 @@ const bankAccountSchema = new mongoose.Schema(
       enum: ["saving", "current"],
       maxLength: 15,
     },
-    amount: {
-      type: Number,
-    },
-    is_active: {
-      type: String,
-      default: "0",
-      enum: ["0", "1"],
-      maxLength: 5,
-    },
-    status: {
-      type: String,
-      enum: ["pending", "rejected", "settled"],
-      maxLength: 15,
-    },
     createDate: "date",
     updatedDate: "date",
   },
   { timestamps: { createDate: "createdAt", updatedDate: "updated_at" } }
 );
 // Bank Account
+
+// Bank
+const bankSchema = new mongoose.Schema(
+  {
+    layerId: { type: mongoose.Types.ObjectId, ref: "User" },
+    type: {
+      type: Number,
+      enum: [1, 2],
+      required: true,
+      Comment: { admin: 1, user: 2 },
+    },
+    title: {
+      type: String,
+      required: true,
+      maxLength: 100,
+    },
+    image: {
+      type: String,
+      maxLength: 100,
+    },
+    createDate: "date",
+    updatedDate: "date",
+  },
+  { timestamps: { createDate: "createdAt", updatedDate: "updated_at" } }
+);
+// Bank
 
 // Login history
 const loginHistorySchema = new mongoose.Schema(
@@ -241,6 +254,7 @@ const userSchema = new mongoose.Schema(
 const UserLoginHistory = mongoose.model("UserLoginHistory", loginHistorySchema);
 const User = mongoose.model("User", userSchema);
 const BankAccount = mongoose.model("BankAccount", bankAccountSchema);
+const Bank = mongoose.model("Bank", bankSchema);
 const ResultTransaction = mongoose.model(
   "ResultTransaction",
   resultTransactionSchema
@@ -250,5 +264,6 @@ module.exports = {
   User,
   UserLoginHistory,
   BankAccount,
+  Bank,
   ResultTransaction,
 };

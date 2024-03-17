@@ -3,6 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const { s3 } = require("../config/aws");
 const { S3_ENABLE } = require("./Constants");
+const { log } = require("console");
 
 module.exports = {
   /**
@@ -150,9 +151,9 @@ module.exports = {
    * @returns {*}
    */
 
-  s3MediaUrl: (folder, date, filename) => {
+  s3MediaUrl: (folder, filename) => {
     if (filename && filename !== "") {
-      return `${process.env.AMZ_BUCKET_URL}/${folder}/${date}/${filename}`;
+      return `${process.env.AMZ_BUCKET_URL}/${folder}/${filename}`;
     }
     return "";
   },

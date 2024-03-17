@@ -25,9 +25,21 @@ const { setting } = require("../../controllers/admin/settingController");
 const {
   question,
   getQuestion,
+  getQuestionAuth,
 } = require("../../controllers/admin/questionController");
 
-const { result, getResult } = require("../../controllers/admin/resultController");
+const {
+  result,
+  getResult,
+} = require("../../controllers/admin/resultController");
+
+const {
+  addBankSlider,
+  bankSliderList,
+  deleteBankSlider,
+  bankTransactionList,
+  acceptRejectRequest,
+} = require("../../controllers/admin/bankTransactionController");
 
 const authMiddleware = (() => {
   const chain = connect();
@@ -64,10 +76,18 @@ router.post("/game-setting", adminTokenAuth, setting);
 
 // question
 router.post("/question", adminTokenAuth, question);
-router.get("/question", adminTokenAuth, getQuestion);
+router.get("/question", getQuestion);
 
 // result
 router.post("/result", adminTokenAuth, result);
 router.get("/get-result", adminTokenAuth, getResult);
 
+// bank
+router.post("/bank-slider", adminTokenAuth, addBankSlider);
+router.post("/delete-bank-slider", adminTokenAuth, deleteBankSlider);
+router.get("/bank-slider", bankSliderList);
+
+// bank transaction
+router.get("/bank-transaction", adminTokenAuth, bankTransactionList);
+router.post("/accept-reject-request", adminTokenAuth, acceptRejectRequest);
 module.exports = router;

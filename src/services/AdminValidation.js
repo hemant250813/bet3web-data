@@ -180,4 +180,65 @@ module.exports = {
     }
     return callback(true);
   },
+
+  /**
+   * @description This function is used to validate result transaction fields.
+   * @param req
+   * @param res
+   */
+  deleteBankValidation: (req, res, callback) => {
+    const schema = Joi.object({
+      bank_id: Joi.string().required(),
+    });
+    const { error } = schema.validate(req);
+    if (error) {
+      return Response.validationErrorResponseData(
+        res,
+        res.__(Helper.validationMessageKey("deleteBankValidation", error))
+      );
+    }
+    return callback(true);
+  },
+
+  /**
+   * @description This function is used to validate result transaction fields.
+   * @param req
+   * @param res
+   */
+  addBankSliderValidation: (req, res, callback) => {
+    const schema = Joi.object({
+      title: Joi.string().optional(),
+      image: Joi.string().trim().optional(),
+    });
+    const { error } = schema.validate(req);
+    if (error) {
+      return Response.validationErrorResponseData(
+        res,
+        res.__(Helper.validationMessageKey("addBankSliderValidation", error))
+      );
+    }
+    return callback(true);
+  },
+
+  /**
+   * @description This function is used to validate result transaction fields.
+   * @param req
+   * @param res
+   */
+  acceptRejectRequestValidation: (req, res, callback) => {
+    const schema = Joi.object({
+      id: Joi.string().required(),
+      remark: Joi.string().trim().optional(),
+    });
+    const { error } = schema.validate(req);
+    if (error) {
+      return Response.validationErrorResponseData(
+        res,
+        res.__(
+          Helper.validationMessageKey("acceptRejectRequestValidation", error)
+        )
+      );
+    }
+    return callback(true);
+  },
 };

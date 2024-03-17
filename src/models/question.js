@@ -9,10 +9,25 @@ const questioResultSchema = new mongoose.Schema(
     question: {
       type: String,
     },
+    option1: {
+      type: String,
+    },
+    option2: {
+      type: String,
+    },
+    option3: {
+      type: String,
+    },
     answer: {
       type: String,
     },
-    odd: {
+    odd1: {
+      type: Number,
+    },
+    odd2: {
+      type: Number,
+    },
+    odd3: {
       type: Number,
     },
     amount: {
@@ -44,7 +59,22 @@ const questionSchema = new mongoose.Schema(
     option3: {
       type: String,
     },
-    odd: {
+    image1: {
+      type: String,
+    },
+    image2: {
+      type: String,
+    },
+    image3: {
+      type: String,
+    },
+    odd1: {
+      type: Number,
+    },
+    odd2: {
+      type: Number,
+    },
+    odd3: {
       type: Number,
     },
     questionSlug: {
@@ -67,5 +97,5 @@ const Question = mongoose.model("Question", questionSchema);
 
 module.exports = {
   QuestionResult,
-  Question
+  Question,
 };

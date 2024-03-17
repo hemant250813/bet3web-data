@@ -14,9 +14,7 @@ const gameSettingSchema = new mongoose.Schema(
     probability: {
       type: Number,
     },
-    odd: {
-      type: Number,
-    },
+    odd: [{ type: Object }],
     delete: {
       type: String,
     },

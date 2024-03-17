@@ -23,7 +23,18 @@ const {
 const { gameSetting } = require("../../controllers/app/settingController");
 
 const {
+  bankTransaction,
+  addBank,
+  depositTransactionList,
+  withdrawalTransactionList,
+  bankList,
+  editBank,
+  deleteBank,
+} = require("../../controllers/app/bankTransactionController");
+
+const {
   getQuestion,
+  getQuestionAuth,
   questionResult,
 } = require("../../controllers/app/questionController");
 
@@ -48,13 +59,23 @@ router.post("/otp-verify", verifyEmail);
 router.post("/resend-otp", resendOtp);
 router.post("/edit-profile", userTokenAuth, editProfile);
 
-// transaction
 router.post("/bet-placed", userTokenAuth, resulTransaction);
+
+// transaction
+router.post("/bank-transaction", userTokenAuth, bankTransaction);
+router.get("/deposit", userTokenAuth, depositTransactionList);
+router.get("/withdrawal", userTokenAuth, withdrawalTransactionList);
+
+// bank
+router.post("/add-bank", userTokenAuth, addBank);
+router.post("/edit-bank", userTokenAuth, editBank);
+router.post("/delete-bank", userTokenAuth, deleteBank);
+router.get("/bank", userTokenAuth, bankList);
 
 // setting
 router.get("/get-setting", userTokenAuth, gameSetting);
 
 // question
-router.get("/question", userTokenAuth, getQuestion);
+router.get("/questions", userTokenAuth, getQuestion);
 router.post("/question-result", userTokenAuth, questionResult);
 module.exports = router;

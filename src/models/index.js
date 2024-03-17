@@ -5,7 +5,7 @@ const {
   ResultTransaction,
 } = require("./user");
 const Otp = require("./otp");
-const Transaction = require("./transaction");
+const { Transaction, BankTransaction } = require("./transaction");
 const GameSetting = require("./gameSetting");
 const { QuestionResult, Question } = require("./question");
 
@@ -16,6 +16,7 @@ module.exports = {
   ResultTransaction,
   Otp,
   Transaction,
+  BankTransaction,
   GameSetting,
   QuestionResult,
   Question,

@@ -94,6 +94,7 @@ module.exports = {
   userRegistration: async (req, res) => {
     try {
       const requestParams = req.body;
+      
       // Below function will validate all the fields which we were passing from the body.
       userRegisterValidation(requestParams, res, async (validate) => {
         if (validate) {

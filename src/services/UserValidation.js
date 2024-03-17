@@ -168,7 +168,6 @@ module.exports = {
       mobile: Joi.string()
         .trim()
         .max(15)
-        .regex(/^(0|[1-9]\d*)$/)
         .required(),
       password: Joi.string()
         .trim()
